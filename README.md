@@ -1,2 +1,4 @@
-# shirsho_web_page
-shirshajit.github.io webpage code
+# Jekyll based website
+
+This is my blog on AI models and recent publications in the field.
+
