@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Under Development
 subtitle: IDEK
 permalink: /first_post
