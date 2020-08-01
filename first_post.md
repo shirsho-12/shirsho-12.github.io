@@ -2,7 +2,7 @@
 layout: page
 title: Under Development
 subtitle: IDEK
-permalink: /blog/whoops
+permalink: /first_post
 tags: [The Great Uknown]
 comments: false
 ---
