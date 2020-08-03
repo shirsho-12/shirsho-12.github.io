@@ -17,7 +17,7 @@ navbar-links:
   #Publications: "publications"
   #Projects: "projects"
   #CV: "cv"
-  Home: "home_page"
+  Home: ""
   About: "aboutme"
 
 # --- Logo --- #

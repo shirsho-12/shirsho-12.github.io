@@ -1,6 +1,6 @@
 ---
-layout: page
-title: Intro 
+layout: base
+title: Introduction 
 subtitle: AI Blogs
 ---
 
