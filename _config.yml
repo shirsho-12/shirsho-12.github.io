@@ -13,7 +13,7 @@ author: Shirshajit Sen Gupta
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  Blog: "first_post"
+  Blog: "blog_page"
   #Publications: "publications"
   #Projects: "projects"
   #CV: "cv"
