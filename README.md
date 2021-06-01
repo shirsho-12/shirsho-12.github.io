@@ -1,4 +1,4 @@
-# Jekyll based website
+# [The Blog](https://shirsho-12.github.io)
 
 This is my blog website, currently working on writing posts involving Reinforcement Learning.
 
