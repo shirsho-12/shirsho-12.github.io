@@ -105,7 +105,7 @@ img::-moz-selection {
 }
 
 img {
-  max-width: 85%;
+  max-width: 100%;
   /* display: block;
   margin-left: auto;
   margin-right: auto; */
