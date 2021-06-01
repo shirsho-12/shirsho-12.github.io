@@ -118,6 +118,7 @@ figcaption {
   font-style: italic;
   padding: 2px;
   text-align: justify;
+  padding-bottom: 25px;
 }
 
 .disqus-comments {
@@ -709,7 +710,7 @@ footer .footer-custom-content {
   display: block;
   border-bottom-right-radius: 0.3125rem;
   border-bottom-left-radius: 0.3125rem;
-  padding-bottom: 50px;
+  /* padding-bottom: 50px; */
 }
 
 #header-gh-btns {
