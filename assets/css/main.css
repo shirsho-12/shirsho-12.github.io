@@ -106,14 +106,18 @@ img::-moz-selection {
 
 img {
   max-width: 85%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 figcaption {
   background-color: white;
-  color: gray;
+  color: black;
   font-style: italic;
   padding: 2px;
-  text-align: center;
+  text-align: justify;
 }
 
 .disqus-comments {
