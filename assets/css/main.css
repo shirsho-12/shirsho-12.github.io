@@ -105,7 +105,15 @@ img::-moz-selection {
 }
 
 img {
-  max-width: 100%;
+  max-width: 85%;
+}
+
+figcaption {
+  background-color: white;
+  color: gray;
+  font-style: italic;
+  padding: 2px;
+  text-align: center;
 }
 
 .disqus-comments {
