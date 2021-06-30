@@ -36,7 +36,7 @@ The agent (our algorithm) interacts with the environment we create here.
 env = gym.make("Roulette-v0")
 ```
 
-Our agent will play the game a number of times, each time choosing to either bet on a number of walk away with its winnings. There are 4 sets of possible actions:
+Our agent will play the game a number of times, each time choosing to either bet on a number or walk away with its winnings. There are 4 sets of possible actions:
 
 - The agent bets on an even number (except 0).
 - The agent bets on an odd number.
@@ -433,7 +433,7 @@ On-policy and off-policy Monte Carlo control algorithms have their strengths and
 
 It should be noted that when the agent is not allowed to walk away from the game, both policies converge to the same optimal policy `{0:0}` -> the agent always bets on the high-risk, high-reward 0. I'll leave that for you to try out; one just has to prevent action 37 from being selected. In other games like blackjack, off-policy Monte Carlo fares slightly better than its on-policy counterpart (42.4% vs 43.7% win rate<sup>[2](#myfootnote2)</sup>). 
 
-So there we have it, Monte Carlo reinforcement learning. A powerful tool. The takeaway from this article - maybe tone down on the little wheel, the only one feeling real lucky is the casino.
+So there we have it, Monte Carlo reinforcement learning - a powerful tool. The takeaway from this article - maybe tone down on the little wheel, the only one feeling real lucky is the casino.
 
 #### Footnotes
 
