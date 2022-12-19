@@ -14,8 +14,8 @@ author: Shirshajit Sen Gupta
 
 navbar-links:
   Blog: "blog_page"
-  #Publications: "publications"
-  #Projects: "projects"
+  Publications: "publications"
+  Projects: "projects"
   #CV: "cv"
   Home: "index.html"
   About: "aboutme"
@@ -51,6 +51,7 @@ social-network-links:
 #  stackoverflow: "3943160/daattali"
 #  snapchat: deanat78
   instagram: _shirsho_
+  devpost: shirshajit
 #  youtube: user/deanat78
 #  spotify: yourname
 #  telephone: +14159998888
@@ -70,6 +71,7 @@ share-links-active:
   linkedin: true
   github: true
   email: true
+  devpost: true
   vk: false
 
 # How to display the link to your website in the footer
@@ -86,15 +88,16 @@ excerpt_length: 50
 
 # Personalize the colors in your website. Colour values can be any valid CSS colour
 
-#navbar-col: "#3399FF"
+#navbar-col: "#373e98"
 #navbar-text-col: "#404040"
-#navbar-border-col: "#3399FF"
-#page-col: "#FFFFFF"
+#navbar-border-col: "#fee36e"
+#page-col: "#2a2a2a"
 #link-col: "#008AFF"
 #hover-col: "#0085A1"
 #footer-col: "#F5F5F5"
 #footer-text-col: "#777777"
 #footer-link-col: "#404040"
+#text-col: "#fefefe"
 
 # Alternatively, the navbar, footer, and page background can be set to use background images
 # instead of colour
