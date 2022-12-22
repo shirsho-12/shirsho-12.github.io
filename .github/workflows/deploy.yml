@@ -2,11 +2,9 @@ name: deploy
 
 on:
   push:
-    branches:
-      - folio_site
+    branches: [ "master" ]
   pull_request:
-    branches:
-      - folio_site
+    branches: [ "master" ]
   workflow_dispatch:
 
 permissions:
@@ -27,6 +25,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+          ref: folio-site
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -39,7 +39,7 @@ jobs:
       id: setup
       run: |
         git config --global user.name "GitHub Action"
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
         if [[ ${GITHUB_REF} = refs/pull/*/merge ]]; then # pull request
           echo "SRC_BRANCH=${GITHUB_HEAD_REF}" >> $GITHUB_OUTPUT
           echo "NO_PUSH=--no-push" >> $GITHUB_OUTPUT
