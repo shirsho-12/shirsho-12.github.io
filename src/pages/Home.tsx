@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import Hero from "@/components/Hero";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,10 +5,13 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
+import { blogPosts } from "@/data/blogPosts";
+import BlogPostCard from "@/components/BlogPostCard";
 
 const Home = () => {
-  // Show only 3 featured projects on the home page
+  // Show only 3 featured projects and blog posts on the home page
   const featuredProjects = projects.slice(0, 3);
+  const recentBlogPosts = blogPosts.slice(0, 3);
 
   return (
     <Layout>
@@ -119,6 +121,32 @@ const Home = () => {
                 image={project.image}
                 githubUrl={project.githubUrl}
                 liveUrl={project.liveUrl}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      {/* Recent Blog Posts Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center mb-12">
+            <h2 className="section-heading mb-0">Recent Blog Posts</h2>
+            <Button asChild variant="outline">
+              <Link to="/blog">View All Posts</Link>
+            </Button>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {recentBlogPosts.map(post => (
+              <BlogPostCard
+                key={post.id}
+                id={post.id}
+                title={post.title}
+                date={post.date}
+                excerpt={post.excerpt}
+                tags={post.tags}
+                coverImage={post.coverImage}
               />
             ))}
           </div>
