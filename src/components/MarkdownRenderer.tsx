@@ -8,6 +8,13 @@ interface MarkdownRendererProps {
   content: string;
 }
 
+// Need to extend the component props to include the 'inline' property
+interface CodeProps {
+  node: any;
+  inline?: boolean;
+  className?: string;
+}
+
 const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
   return (
     <div className="prose prose-slate max-w-none">
@@ -37,7 +44,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
           ul: ({ node, ...props }) => <ul className="list-disc pl-6 my-4" {...props} />,
           ol: ({ node, ...props }) => <ol className="list-decimal pl-6 my-4" {...props} />,
           li: ({ node, ...props }) => <li className="my-1" {...props} />,
-          code: ({ node, inline, ...props }) =>
+          code: ({ node, inline, ...props }: CodeProps) =>
             inline ? (
               <code className="bg-gray-100 px-1 py-0.5 rounded text-navy font-mono text-sm" {...props} />
             ) : (
