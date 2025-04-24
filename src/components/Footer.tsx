@@ -98,7 +98,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-8 pt-8 border-t border-gray-700 text-center md:text-left text-gray-400 text-sm">
-          <p>&copy; {currentYear} CS Portfolio. All rights reserved.</p>
+          <p>&copy; {currentYear} Portfolio. All rights reserved.</p>
         </div>
       </div>
     </footer>
