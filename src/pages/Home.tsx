@@ -11,13 +11,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/data/projects";
-import { blogPosts } from "@/data/blogPosts";
 import BlogPostCard from "@/components/BlogPostCard";
+import { useBlogPosts } from "@/hooks/useBlogPosts";
 
 const Home = () => {
+  const { posts, loading } = useBlogPosts();
   // Show only 3 featured projects and blog posts on the home page
   const featuredProjects = projects.slice(0, 3);
-  const recentBlogPosts = blogPosts.slice(0, 3);
+  const recentBlogPosts = posts.slice(0, 3);
 
   return (
     <Layout>
@@ -172,17 +173,20 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {recentBlogPosts.map((post) => (
-              <BlogPostCard
-                key={post.id}
-                id={post.id}
-                title={post.title}
-                date={post.date}
-                excerpt={post.excerpt}
-                tags={post.tags}
-                coverImage={post.coverImage}
-              />
-            ))}
+            {loading ? (
+              <p>Loading posts...</p>
+            ) : (
+              recentBlogPosts.map((post) => (
+                <BlogPostCard
+                  key={post.id}
+                  id={post.id}
+                  title={post.title}
+                  date={post.date}
+                  excerpt={post.content.slice(0, 150) + "..."}
+                  tags={post.tags}
+                />
+              ))
+            )}
           </div>
         </div>
       </section>
