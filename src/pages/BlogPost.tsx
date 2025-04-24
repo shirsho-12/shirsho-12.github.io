@@ -3,9 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft } from "lucide-react";
+import BlogPostHeader from "@/components/BlogPostHeader";
 
 interface BlogPost {
   id: string;
@@ -27,15 +27,12 @@ const BlogPost = () => {
       try {
         if (!id) return;
         
-        // Load the markdown file
         const content = await import(`../assets/blogs/${id}.md`);
         const fileContent = content.default;
         
-        // Parse the frontmatter
         const [, frontmatter, ...contentParts] = fileContent.split('---');
         const markdown = contentParts.join('---');
         
-        // Parse frontmatter into object
         const meta = frontmatter.split('\n').reduce((acc: any, line: string) => {
           const [key, ...values] = line.split(':').map(str => str.trim());
           if (key && values.length) {
@@ -48,7 +45,6 @@ const BlogPost = () => {
           return acc;
         }, {});
 
-        // Extract date from id
         const dateMatch = id.match(/^\d{4}-\d{2}-\d{2}/);
         const date = dateMatch ? dateMatch[0] : '';
         
@@ -94,22 +90,12 @@ const BlogPost = () => {
           Back to Blog
         </Button>
         
-        <div className="mb-6">
-          <h1 className="text-3xl md:text-4xl font-bold text-navy mb-4">{post.title}</h1>
-          {post.subtitle && (
-            <h2 className="text-xl md:text-2xl text-gray-600 mb-4">{post.subtitle}</h2>
-          )}
-          <div className="flex flex-wrap items-center gap-4 text-gray-600">
-            <span>{post.date}</span>
-            <div className="flex flex-wrap gap-2">
-              {post.tags.map(tag => (
-                <Badge key={tag} variant="secondary" className="bg-gray-100 text-navy">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        </div>
+        <BlogPostHeader
+          title={post.title}
+          subtitle={post.subtitle}
+          date={post.date}
+          tags={post.tags}
+        />
         
         <div className="prose max-w-none">
           <MarkdownRenderer content={post.content} />
