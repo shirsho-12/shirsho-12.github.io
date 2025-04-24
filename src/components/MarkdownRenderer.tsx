@@ -17,6 +17,9 @@ interface CodeProps {
 }
 
 const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
+  // Replace Jekyll-style include tags with nothing (they're not supported in React)
+  const processedContent = content.replace(/{%\s*include.*?%}/g, '');
+
   return (
     <div className="prose prose-slate max-w-none">
       <ReactMarkdown
@@ -73,7 +76,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
           ),
         }}
       >
-        {content}
+        {processedContent}
       </ReactMarkdown>
     </div>
   );

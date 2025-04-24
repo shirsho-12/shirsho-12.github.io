@@ -21,4 +21,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  assetsInclude: ["**/*.md"], // Add markdown files as assets
 }));

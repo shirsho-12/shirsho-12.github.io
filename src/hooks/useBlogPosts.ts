@@ -17,15 +17,16 @@ export const useBlogPosts = () => {
   useEffect(() => {
     const loadBlogPosts = async () => {
       try {
-        // Use the import.meta.glob to dynamically import all markdown files
-        const markdownFiles = import.meta.glob('../assets/blogs/*.md', { eager: true });
+        // Get the list of all markdown files in the blogs directory
+        const blogModules = import.meta.glob('../assets/blogs/*.md', { as: 'raw' });
         
         const loadedPosts: BlogPost[] = [];
         
-        for (const path in markdownFiles) {
+        for (const path in blogModules) {
           try {
             const filename = path.split('/').pop() || '';
-            const content = markdownFiles[path].default;
+            // Load the content as raw text
+            const content = await blogModules[path]();
             
             // Extract the date from the filename (YYYY-MM-DD-title.md format)
             const dateMatch = filename.match(/^(\d{4}-\d{2}-\d{2})/);
