@@ -27,26 +27,50 @@ const BlogPost = () => {
       try {
         if (!id) return;
         
+        // Load the content of the blog post
         const content = await import(`../assets/blogs/${id}.md`);
         const fileContent = content.default;
         
-        const [, frontmatter, ...contentParts] = fileContent.split('---');
-        const markdown = contentParts.join('---');
+        // Split content to separate frontmatter from markdown
+        const parts = fileContent.split('---');
+        if (parts.length < 3) {
+          console.error(`Invalid markdown format in ${id}.md`);
+          throw new Error("Invalid markdown format");
+        }
         
+        // Extract frontmatter (it's the second part after the first ---)
+        const frontmatter = parts[1];
+        // Join the rest as content (in case there are more --- in the content)
+        const markdown = parts.slice(2).join('---');
+        
+        // Parse frontmatter into an object
         const meta = frontmatter.split('\n').reduce((acc: any, line: string) => {
-          const [key, ...values] = line.split(':').map(str => str.trim());
-          if (key && values.length) {
-            if (key === 'tags') {
-              acc[key] = values.join(':').replace(/[\[\]]/g, '').split(',').map(tag => tag.trim());
-            } else {
-              acc[key] = values.join(':');
+          if (!line.trim()) return acc;
+          
+          const colonIndex = line.indexOf(':');
+          if (colonIndex === -1) return acc;
+          
+          const key = line.slice(0, colonIndex).trim();
+          let value = line.slice(colonIndex + 1).trim();
+          
+          // Handle special cases like tags which are in [tag1, tag2] format
+          if (key === 'tags') {
+            // Extract values between [ and ]
+            const match = value.match(/\[(.*)\]/);
+            if (match && match[1]) {
+              value = match[1];
             }
+            acc[key] = value.split(',').map((tag: string) => tag.trim());
+          } else {
+            acc[key] = value;
           }
+          
           return acc;
         }, {});
 
-        const dateMatch = id.match(/^\d{4}-\d{2}-\d{2}/);
-        const date = dateMatch ? dateMatch[0] : '';
+        // Extract date from filename (format: YYYY-MM-DD-title.md)
+        const dateMatch = id.match(/^(\d{4}-\d{2}-\d{2})/);
+        const date = dateMatch ? dateMatch[1] : '';
         
         setPost({
           id,
