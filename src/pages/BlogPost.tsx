@@ -21,21 +21,25 @@ const BlogPost = () => {
   const navigate = useNavigate();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   
   useEffect(() => {
     const loadPost = async () => {
       try {
-        if (!id) return;
+        if (!id) {
+          setError("No blog post ID provided");
+          setLoading(false);
+          return;
+        }
         
-        // Load the content of the blog post
-        const content = await import(`../assets/blogs/${id}.md`);
-        const fileContent = content.default;
+        // Dynamically import the specific markdown file
+        const module = await import(`../assets/blogs/${id}.md`);
+        const content = module.default;
         
         // Split content to separate frontmatter from markdown
-        const parts = fileContent.split('---');
+        const parts = content.split('---');
         if (parts.length < 3) {
-          console.error(`Invalid markdown format in ${id}.md`);
-          throw new Error("Invalid markdown format");
+          throw new Error(`Invalid markdown format in ${id}.md`);
         }
         
         // Extract frontmatter (it's the second part after the first ---)
@@ -43,31 +47,29 @@ const BlogPost = () => {
         // Join the rest as content (in case there are more --- in the content)
         const markdown = parts.slice(2).join('---');
         
-        // Parse frontmatter into an object
-        const meta = frontmatter.split('\n').reduce((acc: any, line: string) => {
-          if (!line.trim()) return acc;
+        // Parse frontmatter
+        const meta: Record<string, any> = {};
+        frontmatter.split('\n').forEach((line: string) => {
+          if (!line.trim()) return;
           
           const colonIndex = line.indexOf(':');
-          if (colonIndex === -1) return acc;
+          if (colonIndex === -1) return;
           
           const key = line.slice(0, colonIndex).trim();
           let value = line.slice(colonIndex + 1).trim();
           
-          // Handle special cases like tags which are in [tag1, tag2] format
+          // Handle tags which are in [tag1, tag2] format
           if (key === 'tags') {
-            // Extract values between [ and ]
             const match = value.match(/\[(.*)\]/);
             if (match && match[1]) {
               value = match[1];
             }
-            acc[key] = value.split(',').map((tag: string) => tag.trim());
+            meta[key] = value.split(',').map((tag: string) => tag.trim());
           } else {
-            acc[key] = value;
+            meta[key] = value;
           }
-          
-          return acc;
-        }, {});
-
+        });
+        
         // Extract date from filename (format: YYYY-MM-DD-title.md)
         const dateMatch = id.match(/^(\d{4}-\d{2}-\d{2})/);
         const date = dateMatch ? dateMatch[1] : '';
@@ -80,10 +82,11 @@ const BlogPost = () => {
           tags: meta.tags || [],
           content: markdown.trim()
         });
+        
+        setLoading(false);
       } catch (error) {
         console.error('Error loading blog post:', error);
-        navigate("/blog", { replace: true });
-      } finally {
+        setError(`Failed to load blog post: ${error instanceof Error ? error.message : 'Unknown error'}`);
         setLoading(false);
       }
     };
@@ -93,14 +96,56 @@ const BlogPost = () => {
   }, [id, navigate]);
   
   if (loading) {
-    return <Layout>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        Loading...
-      </div>
-    </Layout>;
+    return (
+      <Layout>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center">
+            <div className="text-xl font-medium text-gray-700">Loading post...</div>
+          </div>
+        </div>
+      </Layout>
+    );
   }
   
-  if (!post) return null;
+  if (error) {
+    return (
+      <Layout>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center">
+            <div className="text-xl font-medium text-red-600">{error}</div>
+            <Button 
+              variant="ghost" 
+              className="mt-4"
+              onClick={() => navigate("/blog")}
+            >
+              <ChevronLeft className="h-4 w-4 mr-2" />
+              Back to Blog
+            </Button>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+  
+  if (!post) {
+    return (
+      <Layout>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center">
+            <div className="text-xl font-medium text-gray-700">Blog post not found</div>
+            <Button 
+              variant="ghost" 
+              className="mt-4"
+              onClick={() => navigate("/blog")}
+            >
+              <ChevronLeft className="h-4 w-4 mr-2" />
+              Back to Blog
+            </Button>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
   
   return (
     <Layout>
@@ -121,7 +166,7 @@ const BlogPost = () => {
           tags={post.tags}
         />
         
-        <div className="prose max-w-none">
+        <div className="mt-8">
           <MarkdownRenderer content={post.content} />
         </div>
       </div>
