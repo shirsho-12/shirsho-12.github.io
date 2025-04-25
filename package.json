@@ -1,8 +1,8 @@
 {
   "name": "vite_react_shadcn_ts",
   "private": false,
-  "homepage": "https://kinneko-de.github.io/sample-react-typescript-githubpages/",
-  "version": "0.0.0",
+  "homepage": "https://shirsho-12.github.io/",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
