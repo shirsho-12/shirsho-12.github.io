@@ -23,6 +23,11 @@ jobs:
       - name: 🛠️ Build the Vite app
         run: npm run build
 
+      - name: 🚫 Disable Jekyll
+        run: echo > dist/.nojekyll
+
       - name: 🚀 Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        with: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
