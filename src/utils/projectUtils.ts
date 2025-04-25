@@ -1,12 +1,72 @@
-
 import { Project, projects as staticProjects } from "@/data/projects";
-import { useEffect, useState } from "react";
 
 // This would fetch and parse markdown project files from the assets directory
 export async function getMarkdownProjects(): Promise<Project[]> {
-  // In a real implementation, this would dynamically import markdown files
-  // For now, we'll return an empty array as a placeholder
-  return [];
+  try {
+    // Get the list of all markdown files in the projects directory
+    const projectModules = import.meta.glob('../assets/projects/*.md', { as: 'raw' });
+    const loadedProjects: Project[] = [];
+
+    for (const path in projectModules) {
+      try {
+        const content = await projectModules[path]();
+        const filename = path.split('/').pop() || '';
+        
+        // Split content to separate frontmatter from markdown
+        const parts = content.split('---');
+        if (parts.length < 3) {
+          console.error(`Invalid markdown format in ${filename}`);
+          continue;
+        }
+        
+        // Extract frontmatter
+        const frontmatter = parts[1];
+        // Join the rest as content (in case there are more --- in the content)
+        const markdown = parts.slice(2).join('---');
+        
+        // Parse frontmatter
+        const meta: Record<string, any> = {};
+        frontmatter.split('\n').forEach((line: string) => {
+          if (!line.trim()) return;
+          
+          const colonIndex = line.indexOf(':');
+          if (colonIndex === -1) return;
+          
+          const key = line.slice(0, colonIndex).trim();
+          let value = line.slice(colonIndex + 1).trim();
+          
+          // Handle tags which are in [tag1, tag2] format
+          if (key === 'tags') {
+            const match = value.match(/\[(.*)\]/);
+            if (match && match[1]) {
+              value = match[1];
+            }
+            meta[key] = value.split(',').map((tag: string) => tag.trim());
+          } else {
+            meta[key] = value;
+          }
+        });
+
+        loadedProjects.push({
+          id: meta.id || filename.replace('.md', ''),
+          title: meta.title || '',
+          description: meta.description || '',
+          tags: meta.tags || [],
+          image: meta.image,
+          githubUrl: meta.githubUrl,
+          liveUrl: meta.liveUrl,
+          content: markdown.trim()
+        });
+      } catch (error) {
+        console.error(`Error loading project ${path}:`, error);
+      }
+    }
+
+    return loadedProjects;
+  } catch (error) {
+    console.error("Error loading markdown projects:", error);
+    return [];
+  }
 }
 
 // This hook combines projects from both static data and markdown files
