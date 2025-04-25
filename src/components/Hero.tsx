@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -34,7 +33,7 @@ const Hero = () => {
           </div>
           <div className="hidden md:block md:w-1/4 lg:w-1/5">
             <img
-              src="src/assets/images/prof_pic.jpg"
+              src="src/assets/img/prof_pic.jpg"
               alt="Hero Image"
               className="w-full h-80 object-cover rounded-lg shadow-xl hidden md:block"
             />
