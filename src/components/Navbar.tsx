@@ -1,84 +1,132 @@
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { MenuIcon, XIcon } from "lucide-react";
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import { Button } from "@/components/ui/button";
+import useMobile from "@/hooks/use-mobile";
 
 const Navbar = () => {
+  const isMobile = useMobile();
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Projects", path: "/projects" },
-    { name: "Publications", path: "/publications" },
-    { name: "Blog", path: "/blog" },
-    { name: "Contact", path: "/contact" },
+  useEffect(() => {
+    if (isOpen && isMobile) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen, isMobile]);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
+
+  const navItems = [
+    { to: "/", label: "Home" },
+    { to: "/projects", label: "Projects" },
+    { to: "/publications", label: "Publications" },
+    { to: "/blog", label: "Blog" },
+    { to: "/cv", label: "CV" },
+    { to: "/contact", label: "Contact" },
   ];
 
   return (
-    <nav className="bg-background/80 backdrop-blur-sm fixed w-full z-10 shadow-sm border-b">
+    <header
+      className={`fixed w-full top-0 z-50 transition-colors duration-300 ${
+        scrolled
+          ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm"
+          : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center">
-              <span className="text-foreground font-bold text-lg">CS Portfolio</span>
-            </Link>
+        <div className="flex justify-between items-center h-16">
+          <div className="flex-shrink-0">
+            <NavLink
+              to="/"
+              className="text-2xl font-bold text-navy dark:text-white"
+            >
+              Shirshajit
+            </NavLink>
           </div>
-          
-          <div className="hidden md:flex items-center space-x-4">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name}
-                to={link.path}
-                className="text-foreground/80 hover:text-foreground px-3 py-2 rounded-md text-sm font-medium transition-colors"
+
+          {/* Desktop menu */}
+          <nav className="hidden md:flex space-x-6">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) =>
+                  `px-1 py-2 text-sm font-medium transition-colors ${
+                    isActive
+                      ? "text-navy dark:text-white border-b-2 border-navy dark:border-white"
+                      : "text-gray-600 dark:text-gray-300 hover:text-navy dark:hover:text-white"
+                  }`
+                }
               >
-                {link.name}
-              </Link>
+                {item.label}
+              </NavLink>
             ))}
+          </nav>
+
+          <div className="hidden md:flex items-center gap-2">
             <ThemeToggle />
           </div>
-          
+
+          {/* Mobile menu button */}
           <div className="flex md:hidden items-center gap-2">
             <ThemeToggle />
-            <Button 
-              variant="ghost" 
-              size="icon" 
+            <Button
+              variant="ghost"
+              size="icon"
               onClick={toggleMenu}
-              aria-label="Toggle menu"
+              className="text-gray-700 dark:text-gray-200"
             >
               {isOpen ? (
-                <XIcon className="h-5 w-5" />
+                <X className="h-6 w-6" />
               ) : (
-                <MenuIcon className="h-5 w-5" />
+                <Menu className="h-6 w-6" />
               )}
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden bg-background/80 backdrop-blur-sm border-t">
+      {/* Mobile menu panel */}
+      {isMobile && isOpen && (
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg min-h-screen overflow-y-auto">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className="text-foreground/80 hover:text-foreground block px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsOpen(false)}
+            {navItems.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) =>
+                  `block px-3 py-4 text-base font-medium border-b dark:border-gray-700 ${
+                    isActive
+                      ? "text-navy dark:text-white"
+                      : "text-gray-600 dark:text-gray-300"
+                  }`
+                }
+                onClick={closeMenu}
               >
-                {link.name}
-              </Link>
+                {item.label}
+              </NavLink>
             ))}
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 };
 

@@ -2,10 +2,22 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import ProjectCard from "@/components/ProjectCard";
-import { projects } from "@/data/projects";
+import { useState } from "react";
+import { useProjects } from "@/utils/projectUtils";
+import ProjectDialog from "@/components/ProjectDialog";
+import { Project } from "@/data/projects";
 
 const FeaturedProjects = () => {
+  const { projects } = useProjects();
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  
   const featuredProjects = projects.slice(0, 3);
+
+  const handleProjectSelect = (project: Project) => {
+    setSelectedProject(project);
+    setDialogOpen(true);
+  };
 
   return (
     <section className="py-16">
@@ -28,10 +40,19 @@ const FeaturedProjects = () => {
               image={project.image}
               githubUrl={project.githubUrl}
               liveUrl={project.liveUrl}
+              onSelect={() => handleProjectSelect(project)}
             />
           ))}
         </div>
       </div>
+      
+      {selectedProject && (
+        <ProjectDialog
+          project={selectedProject}
+          open={dialogOpen}
+          onOpenChange={setDialogOpen}
+        />
+      )}
     </section>
   );
 };
