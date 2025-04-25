@@ -19,5 +19,5 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: shirsho12/personal-website:${{ github.ref_name }}
-          labels: version=${{ github.ref_name }}
+          tags: shirsho-12/website
+          labels: version=0.0.1
