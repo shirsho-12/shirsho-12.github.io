@@ -9,7 +9,7 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-navy mb-4">Projects</h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Here are some of the projects I've worked on, spanning various technologies and domains.
             Each project represents a unique challenge and learning experience.
           </p>
@@ -19,6 +19,7 @@ const Projects = () => {
           {projects.map(project => (
             <ProjectCard
               key={project.id}
+              id={project.id}
               title={project.title}
               description={project.description}
               tags={project.tags}
