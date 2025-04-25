@@ -8,8 +8,6 @@ export default defineConfig(({ mode }) => ({
   base: "./", // ensure relative paths, e.g. in index.html
   build: {
     outDir: "dist",
-    host: "::",
-    port: 8080,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(
     Boolean
