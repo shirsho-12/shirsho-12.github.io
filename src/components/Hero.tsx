@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
+  const baseUrl = import.meta.env.BASE_URL || "/";
+
   return (
     <section className="relative py-16 md:py-24 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-navy/5 to-teal/5 z-0"></div>
@@ -33,8 +35,8 @@ const Hero = () => {
           </div>
           <div className="hidden md:block md:w-1/4 lg:w-1/5">
             <img
-              src={`${import.meta.env.BASE_URL}/assets/images/prof_pic.jpg`}
-              alt="Hero Image"
+              src={`${baseUrl}assets/img/prof_pic.jpg`}
+              alt="Profile Picture"
               className="w-full h-80 object-cover rounded-lg shadow-xl hidden md:block"
             />
           </div>
