@@ -35,7 +35,7 @@ const Hero = () => {
           </div>
           <div className="hidden md:block md:w-1/4 lg:w-1/5">
             <img
-              src={`${baseUrl}assets/img/prof_pic.jpg`}
+              src={`${baseUrl}src/assets/img/prof_pic.jpg`}
               alt="Profile Picture"
               className="w-full h-80 object-cover rounded-lg shadow-xl hidden md:block"
             />
