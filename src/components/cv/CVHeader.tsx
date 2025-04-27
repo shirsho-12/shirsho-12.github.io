@@ -1,0 +1,30 @@
+import { Button } from "@/components/ui/button";
+
+const CVHeader = () => {
+  return (
+    <header className="mb-16 text-center">
+      <h1 className="text-4xl font-bold mb-4 text-navy">
+        Shirshajit Sen Gupta
+      </h1>
+      <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
+        AI Researcher & Software Engineer
+      </p>
+      <div className="flex justify-center space-x-4">
+        <Button variant="outline" className="flex items-center gap-2">
+          <a
+            href="/assets/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download Resume
+          </a>
+        </Button>
+        <Button asChild className="bg-navy hover:bg-navy/90">
+          <a href="mailto:contact@shirshajit.com">Contact Me</a>
+        </Button>
+      </div>
+    </header>
+  );
+};
+
+export default CVHeader;
