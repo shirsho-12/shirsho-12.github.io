@@ -38,22 +38,27 @@ const LanguageSlider = ({
 
 const SkillsSection = ({ content }: SkillsSectionProps) => {
   // Extract languages from content
-  const languagesMatch = content.match(/### Languages\n\n([\s\S]*?)(?=\n\n|$)/);
+  const languagesMatch = content.match(
+    /### Languages\s*\n\n([\s\S]*?)(?=\n\n###|$)/
+  );
   const languagesText = languagesMatch ? languagesMatch[1] : "";
 
   const languages: Language[] = languagesText
     .split("\n")
     .filter((line) => line.includes(":"))
     .map((line) => {
-      const [name, level] = line
+      const [name, levelStr] = line
         .replace("-", "")
         .trim()
         .split(":")
         .map((s) => s.trim());
-      return { name, level: parseInt(level) };
+      return {
+        name,
+        level: parseInt(levelStr),
+      };
     });
 
-  // Remove the languages section from the content
+  // Remove the languages section from the content for rendering technical skills
   const technicalContent = content.replace(/### Languages[\s\S]*$/, "");
 
   return (

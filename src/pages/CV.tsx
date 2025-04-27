@@ -1,5 +1,4 @@
 import Layout from "@/components/Layout";
-import { useProjects } from "@/utils/projectUtils";
 import { useCVContent } from "@/utils/cvUtils";
 import ProjectDialog from "@/components/ProjectDialog";
 import { Project } from "@/data/projects";
@@ -13,7 +12,8 @@ import ActivitiesSection from "@/components/cv/ActivitiesSection";
 import { Separator } from "@/components/ui/separator";
 
 const CV = () => {
-  const { education, experience, skills, cca, loading, error } = useCVContent();
+  const { education, experiences, skills, cca, loading, error } =
+    useCVContent();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
 
@@ -46,7 +46,7 @@ const CV = () => {
         <div className="space-y-8">
           <EducationSection content={education} />
           <Separator />
-          <ExperienceSection content={experience} />
+          <ExperienceSection experiences={experiences} />
           <Separator />
           <PublicationsSection />
           <Separator />

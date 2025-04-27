@@ -1,65 +1,26 @@
-import { Briefcase } from "lucide-react";
+import { Briefcase, Calendar } from "lucide-react";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
+import { ExperienceItem } from "@/utils/cvUtils";
+import { Badge } from "@/components/ui/badge";
 
 interface ExperienceSectionProps {
-  content: string;
+  experiences: ExperienceItem[];
 }
 
-const ExperienceSection = ({ content }: ExperienceSectionProps) => {
-  // Process content to add end dates and organize by date
-  const processContent = (markdownContent: string) => {
-    // Parse experience entries to extract company, location, position, duration
-    const experienceEntries = [];
-    const regex =
-      /## ([^#\n]+)\n\n_([^_]+)_\s*\n\*\*([^*]+)\*\*\s*\n_([^_]+)_/g;
-    let match;
+const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
+  // Filter featured experiences
+  const featuredExperiences = experiences.filter((exp) => exp.featured);
 
-    while ((match = regex.exec(markdownContent)) !== null) {
-      const company = match[1].trim();
-      const location = match[2].trim();
-      const position = match[3].trim();
-      const duration = match[4].trim();
-
-      // Extract start and end dates from duration (e.g., "Feb 2020 - Jan 2021")
-      const [startDate, endDate] = duration.split("-").map((d) => d.trim());
-
-      // Get the matching content block
-      const startIndex = match.index;
-      const nextMatch = regex.exec(markdownContent);
-      regex.lastIndex = match.index; // Reset the regex to the current match
-
-      const endIndex = nextMatch ? nextMatch.index : markdownContent.length;
-      const contentBlock = markdownContent.substring(startIndex, endIndex);
-
-      experienceEntries.push({
-        company,
-        location,
-        position,
-        startDate,
-        endDate: endDate || "Present",
-        contentBlock,
-      });
-    }
-
-    // Sort entries by end date (most recent first)
-    experienceEntries.sort((a, b) => {
-      // Extract year from end date
-      const getYear = (date) => {
-        const yearMatch = date.match(/\d{4}/);
-        return yearMatch ? parseInt(yearMatch[0]) : 0;
-      };
-
-      const yearA = getYear(a.endDate);
-      const yearB = getYear(b.endDate);
-
-      return yearB - yearA;
+  // Format date from DD/MM/YYYY to Month Year
+  const formatDate = (dateStr: string): string => {
+    if (!dateStr) return "Present";
+    const [day, month, year] = dateStr.split("/").map(Number);
+    const date = new Date(year, month - 1, day);
+    return date.toLocaleDateString("en-US", {
+      month: "short",
+      year: "numeric",
     });
-
-    // Reconstruct the markdown with sorted entries
-    return experienceEntries.map((entry) => entry.contentBlock).join("\n\n");
   };
-
-  const processedContent = processContent(content);
 
   return (
     <section className="mb-16">
@@ -70,9 +31,52 @@ const ExperienceSection = ({ content }: ExperienceSectionProps) => {
       <div className="relative">
         <div className="absolute left-4 top-0 h-full w-0.5 bg-gray-200 dark:bg-gray-700"></div>
         <div className="space-y-12 relative">
-          <div className="prose max-w-none pl-12">
-            <MarkdownRenderer content={processedContent} />
-          </div>
+          {featuredExperiences.map((experience, index) => (
+            <div key={experience.id} className="relative pl-12">
+              {/* Timeline dot */}
+              <div className="absolute left-0 top-0 w-8 h-8 bg-navy rounded-full flex items-center justify-center -ml-4 mt-1 z-10">
+                <Calendar className="h-4 w-4 text-white" />
+              </div>
+
+              {/* Experience content */}
+              <div className="bg-white dark:bg-gray-800 p-5 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700">
+                <div className="flex flex-col md:flex-row justify-between mb-2">
+                  <h3 className="text-xl font-bold text-navy">
+                    {experience.title}
+                  </h3>
+                  <span className="text-sm text-gray-500">
+                    {formatDate(experience.start_date)} -{" "}
+                    {formatDate(experience.end_date)}
+                  </span>
+                </div>
+
+                <div className="flex flex-col md:flex-row md:items-center gap-2 mb-4">
+                  <h4 className="font-medium text-gray-700 dark:text-gray-300">
+                    {experience.description}
+                  </h4>
+                  <span className="text-sm text-gray-500 md:ml-2">
+                    {experience.address}
+                  </span>
+                </div>
+
+                <div className="mb-4 flex flex-wrap gap-2">
+                  {experience.tags.map((tag, idx) => (
+                    <Badge
+                      key={idx}
+                      variant="outline"
+                      className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+
+                <div className="prose max-w-none dark:prose-invert">
+                  <MarkdownRenderer content={experience.content} />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
