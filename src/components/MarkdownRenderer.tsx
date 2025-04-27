@@ -21,6 +21,20 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
   // Replace Jekyll-style include tags with nothing (they're not supported in React)
   const processedContent = content.replace(/{%\s*include.*?%}/g, "");
 
+  // Process image paths to make them work with GitHub Pages
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  const processedWithImagePaths = processedContent.replace(
+    /!\[(.*?)\]\((?!http)(.*?)\)/g,
+    (match, alt, path) => {
+      // If path starts with /, it's an absolute path from the root
+      // If not, it's a relative path
+      const newPath = path.startsWith("/")
+        ? `${baseUrl}${path.substring(1)}`
+        : `${baseUrl}${path}`;
+      return `![${alt}](${newPath})`;
+    }
+  );
+
   return (
     <div className="prose prose-slate max-w-none">
       <ReactMarkdown
@@ -81,6 +95,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                 </code>
               );
             }
+
             return (
               <SyntaxHighlighter
                 style={oneDark}
@@ -119,7 +134,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
           ),
         }}
       >
-        {processedContent}
+        {processedWithImagePaths}
       </ReactMarkdown>
     </div>
   );

@@ -7,4 +7,5 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   content?: string;
+  featured?: boolean;
 }

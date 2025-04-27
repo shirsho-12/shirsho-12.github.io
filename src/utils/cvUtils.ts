@@ -55,17 +55,19 @@ export function useCVContent() {
     async function fetchContent() {
       try {
         setLoading(true);
-        const [educationMd, experienceMd, skillsMd, ccaMd] = await Promise.all([
-          import("../assets/others/education.md?raw"),
-          import("../assets/others/experience.md?raw"),
-          import("../assets/others/skills.md?raw"),
-          import("../assets/others/cca.md?raw"),
-        ]);
+        const educationModule = await import(
+          "../assets/others/education.md?raw"
+        );
+        const experienceModule = await import(
+          "../assets/others/experience.md?raw"
+        );
+        const skillsModule = await import("../assets/others/skills.md?raw");
+        const ccaModule = await import("../assets/others/cca.md?raw");
 
-        setEducation(educationMd);
-        setExperience(experienceMd);
-        setSkills(skillsMd);
-        setCCA(ccaMd);
+        setEducation(educationModule.default || "");
+        setExperience(experienceModule.default || "");
+        setSkills(skillsModule.default || "");
+        setCCA(ccaModule.default || "");
       } catch (err) {
         console.error("Error loading CV content:", err);
         setError(
