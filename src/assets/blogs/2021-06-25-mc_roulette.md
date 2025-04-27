@@ -5,7 +5,7 @@ subtitle: RL Basics
 permalink: /blog/rl_mc_roulette/
 tags: [Reinforcement Learning, Monte Carlo, MC Control, RL Basics, RL Games]
 comments: true
-share-img: https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/master/images/rl/monte_carlo.png
+share-img: https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/master/src/assets/img/rl/monte_carlo.png
 ---
 
 Previously, we looked into the Monte Carlo family of reinforcement learning algorithms. These methods estimate the solution to a RL problem by _learning from experience_. Just by simulation and blind exploration, Monte Carlo agent reaches the optimal solution.
@@ -375,7 +375,7 @@ def off_policy_mc_contro(env, gamma, num_episodes, behaviour_policy):
     return Q, policy
 ```
 
-Due to the incremental update, we do not keep track of rewards, `G_sum`, instead updating the Q-function in-place. We substitute <img src="https://render.githubusercontent.com/render/math?math=V_n=\sum_{k=1}^{n}(w_kR_k)/\sum_{k=1}^{n}w_k"> with <img src="https://render.githubusercontent.com/render/math?math=v_{n %2B 1}=V_n %2B w_{n %2B 1 }(R_{n %2B 1} - V_n)/N_{n %2B 1}">. Instead of calculating the Q-function in a for loop in the end, we update it in each iteration. `N` is the sum of weights for the state-action pair up-to that point.
+Due to the incremental update, we do not keep track of rewards, `G_sum`, instead updating the Q-function in-place. We substitute $V_n=\sum_{k=1}^{n}(w_kR_k)/\sum_{k=1}^{n}w_k$ with $v_{n %2B 1}=V_n %2B w_{n %2B 1 }(R_{n %2B 1} - V_n)/N_{n %2B 1}$. Instead of calculating the Q-function in a for loop in the end, we update it in each iteration. `N` is the sum of weights for the state-action pair up-to that point.
 
 ```py
 N[(state, action)] += w
@@ -383,7 +383,7 @@ Q[state][action] += (w / N[(state, action)]) * (net_reward - Q[state][action])
 ```
 
 This time, we need to keep track of a new variable, `w`, the weight of each state-action pair. As the number of appearances of a state-action pair increases, `w` increases. This is because the denominator  
-`behaviour_policy(state)[action]`<img src="https://render.githubusercontent.com/render/math?math=\leq 1"> . States that appear earlier on are weighed higher.
+`behaviour_policy(state)[action]`$\leq 1$. States that appear earlier on are weighed higher.
 
 ```py
 if action != torch.argmax(Q[state]):
@@ -431,7 +431,7 @@ It should be noted that when the agent is not allowed to walk away from the game
 
 So there we have it, Monte Carlo reinforcement learning - a powerful tool. The takeaway from this article - maybe tone down on the little wheel, the only one feeling real lucky is the casino.
 
-#### Footnotes
+### Footnotes
 
 <a name="myfootnote1">[1]</a> Master Traditional Games. [Rules of Roulette](https://www.mastersofgames.com/rules/roulette-rules.htm)
 
