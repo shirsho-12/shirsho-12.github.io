@@ -27,7 +27,7 @@ const LanguageSlider = ({
       <Slider
         value={[level]}
         max={5}
-        min={1}
+        min={0}
         step={1}
         disabled
         className="w-full"

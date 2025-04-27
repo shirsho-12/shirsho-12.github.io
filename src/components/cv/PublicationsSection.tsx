@@ -16,7 +16,9 @@ const PublicationsSection = () => {
         <div className="space-y-8 relative">
           {loading && <p>Loading publications...</p>}
           {error && (
-            <p className="text-red-500">Error loading publications: {error}</p>
+            <p className="text-red-500">
+              Error loading publications: {error.message}
+            </p>
           )}
           {publications?.map((pub) => (
             <div key={pub.id} className="pl-12 relative">
