@@ -7,8 +7,10 @@ import { useState } from "react";
 import CVHeader from "@/components/cv/CVHeader";
 import EducationSection from "@/components/cv/EducationSection";
 import ExperienceSection from "@/components/cv/ExperienceSection";
+import PublicationsSection from "@/components/cv/PublicationsSection";
 import SkillsSection from "@/components/cv/SkillsSection";
 import ActivitiesSection from "@/components/cv/ActivitiesSection";
+import { Separator } from "@/components/ui/separator";
 
 const CV = () => {
   const { education, experience, skills, cca, loading, error } = useCVContent();
@@ -41,10 +43,17 @@ const CV = () => {
     <Layout>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <CVHeader />
-        <ExperienceSection content={experience} />
-        <EducationSection content={education} />
-        <SkillsSection content={skills} />
-        <ActivitiesSection content={cca} />
+        <div className="space-y-8">
+          <EducationSection content={education} />
+          <Separator />
+          <ExperienceSection content={experience} />
+          <Separator />
+          <PublicationsSection />
+          <Separator />
+          <SkillsSection content={skills} />
+          <Separator />
+          <ActivitiesSection content={cca} />
+        </div>
       </div>
 
       {selectedProject && (
