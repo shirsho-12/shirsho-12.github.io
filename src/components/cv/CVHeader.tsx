@@ -12,7 +12,7 @@ const CVHeader = () => {
       <div className="flex justify-center space-x-4">
         <Button variant="outline" className="flex items-center gap-2">
           <a
-            href="/assets/resume.pdf"
+            href="https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/refs/heads/master/src/assets/resume/Shirshajit_Sen_Gupta_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
