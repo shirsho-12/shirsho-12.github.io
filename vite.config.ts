@@ -9,6 +9,7 @@ export default defineConfig(({ mode }) => ({
     outDir: "dist",
     host: "::",
     port: 8080,
+    historyApiFallback: true,
   },
   plugins: [react()].filter(Boolean),
   resolve: {
