@@ -39,8 +39,8 @@ jobs:
         run: npm ci
       - name: Build
         run: |
-          SUPABASE_URL=${{ secrets.SUPABASE_URL }} \
-          SUPABASE_PUBLISHABLE_KEY=${{ secrets.SUPABASE_PUBLISHABLE_KEY }} \
+          VITE_SUPABASE_URL=${{ secrets.VITE_SUPABASE_URL }} \
+          VITE_SUPABASE_PUBLISHABLE_KEY=${{ secrets.VITE_SUPABASE_PUBLISHABLE_KEY }} \
           npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
