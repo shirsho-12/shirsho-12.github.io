@@ -37,28 +37,24 @@ const LanguageSlider = ({
 };
 
 const SkillsSection = ({ content }: SkillsSectionProps) => {
-  // Extract languages from content
   const languagesMatch = content.match(
-    /### Languages\s*\n\n([\s\S]*?)(?=\n\n###|$)/
+    /\|\s*Language\s*\|\s*Proficiency\s*\|([\s\S]*?)(?=\n\n|$)/
   );
   const languagesText = languagesMatch ? languagesMatch[1] : "";
 
   const languages: Language[] = languagesText
     .split("\n")
-    .filter((line) => line.includes(":"))
+    .filter((line) => line.includes("|"))
     .map((line) => {
-      const [name, levelStr] = line
-        .replace("-", "")
-        .trim()
-        .split(":")
-        .map((s) => s.trim());
+      const [_, name, level] = line.split("|").map((s) => s.trim());
+      if (!name || !level) return null;
       return {
         name,
-        level: parseInt(levelStr),
+        level: parseInt(level),
       };
-    });
+    })
+    .filter((lang): lang is Language => lang !== null);
 
-  // Remove the languages section from the content for rendering technical skills
   const technicalContent = content.replace(/### Languages[\s\S]*$/, "");
 
   return (
@@ -72,7 +68,7 @@ const SkillsSection = ({ content }: SkillsSectionProps) => {
       </div>
       <div className="mt-8">
         <h3 className="text-xl font-semibold mb-6">Languages</h3>
-        <div className="max-w-md">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {languages.map((lang) => (
             <LanguageSlider
               key={lang.name}

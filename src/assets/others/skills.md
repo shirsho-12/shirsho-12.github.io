@@ -5,8 +5,9 @@
 
 ### Languages
 
-- German: 4
-- Bengali: 5
-- English: 5
-- Hindi: 4
-- French: 1
+| Language | Proficiency |
+| Bengali | 5 |
+| English | 5 |
+| German | 4 |
+| Hindi | 4 |
+| French | 1 |

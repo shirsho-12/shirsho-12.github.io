@@ -4,8 +4,7 @@ title: Reinforcement Learning Blog
 description: A personal blog series on classical RL algorithms with custom visual simulations.
 duration: Sep 2023 – Present
 featured: false
-tags:
-  ["Reinforcement Learning", "Blogging", "Simulation", "Independent Project"]
+tags: ["Reinforcement Learning", "Simulation", "Independent Project"]
 image: www.google.com
 githubUrl: https://www.google.com
 liveUrl: https://www.google.com

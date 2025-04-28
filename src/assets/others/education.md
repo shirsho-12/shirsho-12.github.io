@@ -2,17 +2,20 @@
 
 ### National University of Singapore
 
-**Bachelors of Computing (Computer Science & Mathematics)**  
 Singapore 119077  
-_Aug 2021 – May 2025_
+Aug 2021 – May 2025
 
-**Focus Areas:** Artificial Intelligence, Database Systems, German  
+**Focus Areas:** Artificial Intelligence, Database Systems, German
+
 **Relevant Modules:**
 
 - CS6207 Advanced Natural Language Processing
 - CS4243 Computer Vision
 - CS4248 Natural Language Processing
 - CS3216 Software Product Engineering
+
+**Teaching Assistant:**
+
 - IT5005 Artificial Intelligence
 - DBA5101 Analytics in Managerial Economics
 
@@ -20,9 +23,8 @@ _Aug 2021 – May 2025_
 
 ### McGill University
 
-**Bachelors of Science (Computer Science and Biology)**  
 Quebec, Canada  
-_Aug 2020 – May 2021_
+Aug 2020 – May 2021
 
 **Relevant Modules:**
 
