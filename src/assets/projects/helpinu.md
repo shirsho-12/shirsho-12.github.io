@@ -5,9 +5,10 @@ description: A volunteer aggregation platform for individuals and organizations 
 duration: Jan 2023
 featured: true
 tags: ["Social Good", "Volunteerism", "Community Platform", "Hackathon"]
-image: www.google.com
-githubUrl: https://www.google.com
-liveUrl: https://www.google.com
+image: https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/388/827/datas/gallery.jpg
+githubUrl: https://github.com/The-CoPilots/HelpinU
+liveUrl: https://helpingu.netlify.app/
+youtubeUrl: https://youtu.be/NwDecxbLP_c
 ---
 
 # Project Content

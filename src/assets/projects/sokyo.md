@@ -5,9 +5,9 @@ description: A peer-finding messaging platform for university students.
 duration: Nov 2023
 featured: true
 tags: ["Flutter", "Messaging", "Full-Stack", "Hackathon"]
-image: www.google.com
-githubUrl: https://www.google.com
-liveUrl: https://www.google.com
+image: https://raw.githubusercontent.com/shirsho-12/sokyo_eduhacks/refs/heads/master/assets/images/logo.PNG
+githubUrl: https://github.com/shirsho-12/sokyo_eduhacks
+youtubeUrl: https://youtu.be/abP0T339GWY
 ---
 
 # Project Content

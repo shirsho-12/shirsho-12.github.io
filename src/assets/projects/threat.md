@@ -11,9 +11,9 @@ tags:
     "Fourier Analysis",
     "Course Project",
   ]
-image: www.google.com
-githubUrl: https://www.google.com
-liveUrl: https://www.google.com
+image: https://raw.githubusercontent.com/shirsho-12/cs4243_threat_detection/refs/heads/master/images/efficientdet_architecture.PNG
+githubUrl: https://github.com/shirsho-12/cs4243_threat_detection
+paperUrl: https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/refs/heads/master/src/assets/docs/cs4243.pdf
 ---
 
 # Project Content

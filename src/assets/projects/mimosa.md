@@ -5,9 +5,7 @@ description: A mobile app that detects early autism-spectrum disorder using gaze
 duration: May 2024 – Aug 2024
 featured: false
 tags: ["Android", "Dart", "Eye Tracking", "Animation", "Independent Project"]
-image: www.google.com
-githubUrl: https://www.google.com
-liveUrl: https://www.google.com
+githubUrl: https://github.com/shirsho-12/bci_mimosa
 ---
 
 # Project Content

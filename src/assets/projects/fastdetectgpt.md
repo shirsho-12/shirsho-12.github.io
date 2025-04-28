@@ -5,9 +5,7 @@ description: An NLP model that detects LLM-generated text and outperforms curren
 duration: Jan 2024 – Apr 2024
 featured: false
 tags: ["NLP", "LLM", "GenAI", "Python", "Course Project"]
-image: www.google.com
-githubUrl: https://www.google.com
-liveUrl: https://www.google.com
+paperUrl: https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/refs/heads/master/src/assets/docs/FastDetectGPT_XS.pdf
 ---
 
 # Project Content

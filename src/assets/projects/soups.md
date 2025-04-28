@@ -5,9 +5,9 @@ description: A platform to connect soup kitchens with volunteers for improved fo
 duration: Dec 2023
 featured: false
 tags: ["Web App", "Social Good", "Accessibility", "Hackathon"]
-image: www.google.com
-githubUrl: https://www.google.com
-liveUrl: https://www.google.com
+image: https://raw.githubusercontent.com/shirsho-12/soupS/refs/heads/master/assets/images/logo.PNG
+githubUrl: https://github.com/shirsho-12/soupS
+youtubeUrl: https://youtu.be/_c5n4Yl0JH4
 ---
 
 # Project Content

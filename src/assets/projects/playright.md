@@ -5,9 +5,9 @@ description: An idea exploration platform that uses GPT-3 to generate creative w
 duration: Nov 2023
 featured: false
 tags: ["GPT-3", "UI/UX", "Cross-Platform", "Hackathon"]
-image: www.google.com
-githubUrl: https://www.google.com
-liveUrl: https://www.google.com
+image: https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/313/520/datas/gallery.jpg
+githubUrl: https://github.com/shirsho-12/PlayRight.
+youtubeUrl: https://youtu.be/FMq26hACHbc
 ---
 
 # Project Content
