@@ -375,7 +375,7 @@ def off_policy_mc_contro(env, gamma, num_episodes, behaviour_policy):
     return Q, policy
 ```
 
-Due to the incremental update, we do not keep track of rewards, `G_sum`, instead updating the Q-function in-place. We substitute $V_n=\sum_{k=1}^{n}(w_kR_k)/\sum_{k=1}^{n}w_k$ with $v_{n %2B 1}=V_n %2B w_{n %2B 1 }(R_{n %2B 1} - V_n)/N_{n %2B 1}$. Instead of calculating the Q-function in a for loop in the end, we update it in each iteration. `N` is the sum of weights for the state-action pair up-to that point.
+Due to the incremental update, we do not keep track of rewards, `G_sum`, instead updating the Q-function in-place. We substitute $V_n=\sum_{k=1}^{n}(w_kR_k)/\sum_{k=1}^{n}w_k$ with $v_{n + 1}=V_n + w_{n + 1 }(R_{n + 1} - V_n)/N_{n + 1}$. Instead of calculating the Q-function in a for loop in the end, we update it in each iteration. `N` is the sum of weights for the state-action pair up-to that point.
 
 ```py
 N[(state, action)] += w

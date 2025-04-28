@@ -1,15 +1,17 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import "katex/dist/katex.min.css";
 
 interface MarkdownRendererProps {
   content: string;
 }
 
-// Need to extend the component props to include the 'inline' property
 interface CodeProps {
   node: any;
   inline?: boolean;
@@ -18,16 +20,12 @@ interface CodeProps {
 }
 
 const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
-  // Replace Jekyll-style include tags with nothing (they're not supported in React)
   const processedContent = content.replace(/{%\s*include.*?%}/g, "");
 
-  // Process image paths to make them work with GitHub Pages
   const baseUrl = import.meta.env.BASE_URL || "/";
   const processedWithImagePaths = processedContent.replace(
     /!\[(.*?)\]\((?!http)(.*?)\)/g,
     (match, alt, path) => {
-      // If path starts with /, it's an absolute path from the root
-      // If not, it's a relative path
       const newPath = path.startsWith("/")
         ? `${baseUrl}${path.substring(1)}`
         : `${baseUrl}${path}`;
@@ -38,8 +36,8 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
   return (
     <div className="prose prose-slate max-w-none">
       <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeRaw, rehypeKatex]}
         components={{
           h1: ({ node, ...props }) => (
             <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />
@@ -131,6 +129,12 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
           ),
           td: ({ node, ...props }) => (
             <td className="border border-gray-300 px-4 py-2" {...props} />
+          ),
+          math: ({ node, ...props }) => (
+            <div className="my-4 overflow-x-auto" {...props} />
+          ),
+          inlineMath: ({ node, ...props }) => (
+            <span className="mx-1" {...props} />
           ),
         }}
       >
