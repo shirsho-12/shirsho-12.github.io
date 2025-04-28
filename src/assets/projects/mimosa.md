@@ -4,12 +4,7 @@ title: Mimosa
 description: A mobile app that detects early autism-spectrum disorder using gaze-based interactions in toddlers.
 duration: May 2024 – Aug 2024
 featured: false
-tags:
-  - Android
-  - Dart
-  - Eye Tracking
-  - Animation
-  - Independent Project
+tags: ["Android", "Dart", "Eye Tracking", "Animation", "Independent Project"]
 image: www.google.com
 githubUrl: https://www.google.com
 liveUrl: https://www.google.com

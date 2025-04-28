@@ -4,11 +4,7 @@ title: soupS
 description: A platform to connect soup kitchens with volunteers for improved food distribution.
 duration: Dec 2023
 featured: false
-tags:
-  - Web App
-  - Social Good
-  - Accessibility
-  - Hackathon
+tags: ["Web App", "Social Good", "Accessibility", "Hackathon"]
 image: www.google.com
 githubUrl: https://www.google.com
 liveUrl: https://www.google.com

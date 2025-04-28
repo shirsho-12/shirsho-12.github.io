@@ -5,10 +5,12 @@ description: A CV model that ranked first in class for detecting multiple object
 duration: Jan 2023 – Apr 2023
 featured: false
 tags:
-  - Computer Vision
-  - Feature Pyramid Networks
-  - Fourier Analysis
-  - Course Project
+  [
+    "Computer Vision",
+    "Feature Pyramid Networks",
+    "Fourier Analysis",
+    "Course Project",
+  ]
 image: www.google.com
 githubUrl: https://www.google.com
 liveUrl: https://www.google.com

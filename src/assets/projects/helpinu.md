@@ -4,11 +4,7 @@ title: HelpinU
 description: A volunteer aggregation platform for individuals and organizations to coordinate community efforts.
 duration: Jan 2023
 featured: true
-tags:
-  - Social Good
-  - Volunteerism
-  - Community Platform
-  - Hackathon
+tags: ["Social Good", "Volunteerism", "Community Platform", "Hackathon"]
 image: www.google.com
 githubUrl: https://www.google.com
 liveUrl: https://www.google.com

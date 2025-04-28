@@ -45,7 +45,12 @@ export async function getMarkdownProjects(): Promise<Project[]> {
             if (match && match[1]) {
               value = match[1];
             }
-            meta[key] = value.split(",").map((tag: string) => tag.trim());
+            meta[key] = value
+              .split(",")
+              .map((tag: string) => tag.trim().replace(/^"|"$/g, ""));
+          } else if (key == "featured") {
+            // convert string to boolean
+            meta[key] = value === "true" ? true : false;
           } else {
             meta[key] = value;
           }
@@ -60,6 +65,7 @@ export async function getMarkdownProjects(): Promise<Project[]> {
           githubUrl: meta.githubUrl,
           liveUrl: meta.liveUrl,
           content: markdown.trim(),
+          featured: meta.featured || false,
         });
       } catch (error) {
         console.error(`Error loading project ${path}:`, error);

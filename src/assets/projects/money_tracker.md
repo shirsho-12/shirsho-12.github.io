@@ -4,11 +4,7 @@ title: Money_Tracker
 description: A budgeting tool for college students that scans receipts and tracks expenditures.
 duration: Nov 2021
 featured: false
-tags:
-  - Finance
-  - OCR
-  - College Life
-  - Hackathon
+tags: ["Finance", "OCR", "College Life", "Hackathon"]
 image: www.google.com
 githubUrl: https://www.google.com
 liveUrl: https://www.google.com

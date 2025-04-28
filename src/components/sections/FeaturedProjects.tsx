@@ -10,7 +10,8 @@ const FeaturedProjects = () => {
   const { projects, loading, error } = useProjects();
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
-
+  // print all projects to the console
+  // Filter projects to get only featured ones and limit to 3
   const featuredProjects = projects
     .filter((project) => project.featured === true)
     .slice(0, 3);

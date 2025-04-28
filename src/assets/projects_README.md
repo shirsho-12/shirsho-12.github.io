@@ -1,4 +1,3 @@
-
 # Project Markdown Files
 
 This directory will contain markdown files for projects. Each markdown file should follow this format:
@@ -8,9 +7,7 @@ This directory will contain markdown files for projects. Each markdown file shou
 id: project-id
 title: Project Title
 description: Short project description
-tags: 
-  - tag1
-  - tag2
+tags: ["tag1", "tag2"]
 image: path/to/image.jpg
 githubUrl: https://github.com/username/repository
 liveUrl: https://example.com

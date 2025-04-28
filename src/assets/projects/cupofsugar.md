@@ -4,11 +4,7 @@ title: Cup of Sugar
 description: A fundraising platform that enables neighbors to support each other by offering goods and services.
 duration: Nov 2022
 featured: false
-tags:
-  - Community
-  - Fundraising
-  - Social Good
-  - Hackathon
+tags: ["Community", "Fundraising", "Social Good", "Hackathon"]
 image: www.google.com
 githubUrl: https://www.google.com
 liveUrl: https://www.google.com

@@ -4,11 +4,7 @@ title: Sokyo
 description: A peer-finding messaging platform for university students.
 duration: Nov 2023
 featured: true
-tags:
-  - Flutter
-  - Messaging
-  - Full-Stack
-  - Hackathon
+tags: ["Flutter", "Messaging", "Full-Stack", "Hackathon"]
 image: www.google.com
 githubUrl: https://www.google.com
 liveUrl: https://www.google.com

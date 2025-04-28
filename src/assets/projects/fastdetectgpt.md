@@ -4,12 +4,7 @@ title: FastDetectGPT++
 description: An NLP model that detects LLM-generated text and outperforms current state-of-the-art models.
 duration: Jan 2024 – Apr 2024
 featured: false
-tags:
-  - NLP
-  - LLM
-  - GenAI
-  - Python
-  - Course Project
+tags: ["NLP", "LLM", "GenAI", "Python", "Course Project"]
 image: www.google.com
 githubUrl: https://www.google.com
 liveUrl: https://www.google.com

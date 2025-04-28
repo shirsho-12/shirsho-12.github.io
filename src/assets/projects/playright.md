@@ -4,11 +4,7 @@ title: PlayRight
 description: An idea exploration platform that uses GPT-3 to generate creative writing prompts.
 duration: Nov 2023
 featured: false
-tags:
-  - GPT-3
-  - UI/UX
-  - Cross-Platform
-  - Hackathon
+tags: ["GPT-3", "UI/UX", "Cross-Platform", "Hackathon"]
 image: www.google.com
 githubUrl: https://www.google.com
 liveUrl: https://www.google.com
