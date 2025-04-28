@@ -1,0 +1,3 @@
+Rename file to .env, add VITE\_ prefix to variables and set values
+VITE_SUPABASE_URL=<your_supabase_url>
+VITE_SUPABASE_PUBLISHABLE_KEY=<your_supabase_publishable_key>
