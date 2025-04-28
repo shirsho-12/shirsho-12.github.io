@@ -13,7 +13,11 @@ import NotFound from "./pages/NotFound";
 import CV from "./pages/CV";
 
 const queryClient = new QueryClient();
-
+console.log("Supabase URL:", import.meta.env.VITE_SUPABASE_URL);
+console.log(
+  "Supabase Publishable Key:",
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
+);
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
