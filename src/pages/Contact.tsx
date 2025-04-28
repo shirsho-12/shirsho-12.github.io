@@ -13,6 +13,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { useInteractionTracking } from "@/hooks/useInteractionTracking";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -23,6 +25,7 @@ const Contact = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { logInteraction } = useInteractionTracking();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -31,21 +34,44 @@ const Contact = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
+    try {
+      // Store message in Supabase
+      const { error: dbError } = await supabase
+        .from("contact_messages")
+        .insert([formData]);
+
+      if (dbError) throw dbError;
+
+      // Send email via edge function
+      const response = await supabase.functions.invoke("send-email", {
+        body: formData,
       });
-      toast.success("Message sent successfully! I'll get back to you soon.");
-    }, 1500);
+
+      if (!response.error) {
+        toast.success("Message sent successfully! I'll get back to you soon.");
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Failed to send email");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleSocialClick = (platform: string) => {
+    logInteraction("social_click", platform);
   };
 
   return (
@@ -149,6 +175,7 @@ const Contact = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-teal hover:underline"
+                      onClick={() => handleSocialClick("github")}
                     >
                       github.com/shirsho-12
                     </a>
@@ -167,6 +194,7 @@ const Contact = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-teal hover:underline"
+                      onClick={() => handleSocialClick("linkedin")}
                     >
                       linkedin.com/in/shirshajit
                     </a>
@@ -183,6 +211,7 @@ const Contact = () => {
                     <a
                       href="mailto:shirshajit@gmail.com"
                       className="text-teal hover:underline"
+                      onClick={() => handleSocialClick("email")}
                     >
                       shirshajit@gmail.com
                     </a>

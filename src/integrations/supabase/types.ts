@@ -9,7 +9,63 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never;
+      contact_messages: {
+        Row: {
+          created_at: string;
+          email: string;
+          id: string;
+          message: string;
+          name: string;
+          subject: string;
+        };
+        Insert: {
+          created_at?: string;
+          email: string;
+          id?: string;
+          message: string;
+          name: string;
+          subject: string;
+        };
+        Update: {
+          created_at?: string;
+          email?: string;
+          id?: string;
+          message?: string;
+          name?: string;
+          subject?: string;
+        };
+        Relationships: [];
+      };
+      user_interactions: {
+        Row: {
+          created_at: string;
+          element_clicked: string | null;
+          id: string;
+          interaction_type: string;
+          ip_address: string | null;
+          page_url: string;
+          user_agent: string | null;
+        };
+        Insert: {
+          created_at?: string;
+          element_clicked?: string | null;
+          id?: string;
+          interaction_type: string;
+          ip_address?: string | null;
+          page_url: string;
+          user_agent?: string | null;
+        };
+        Update: {
+          created_at?: string;
+          element_clicked?: string | null;
+          id?: string;
+          interaction_type?: string;
+          ip_address?: string | null;
+          page_url?: string;
+          user_agent?: string | null;
+        };
+        Relationships: [];
+      };
     };
     Views: {
       [_ in never]: never;
