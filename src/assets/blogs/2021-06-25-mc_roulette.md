@@ -16,6 +16,11 @@ Today, we will go through an interesting case: the game of roulette. We will dis
 
 A roulette wheel consists of a spinning disk with divisions around its edge that revolves around the base of a bowl. A ball is spun around the outside of the bowl until eventually ball and wheel come to rest with the ball in one of the divisions. The divisions around the wheel are numbered from 1 to 36 in a seemingly random pattern and alternate red and black. Prior to rolling the ball, people place bets on what number will come up by laying down chips on a betting mat, the precise location of the chips indicating the bet being made<sup>[1](#myfootnote1)</sup>.
 
+<figure>
+    <img src="https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/master/src/assets/img/rl/roulette_wheel.jpg" desc="A roulette wheel">
+    <figcaption>A roulette wheel in high definition.</figcaption>
+</figure>
+
 ## The Player
 
 We will set up the game in OpenAI Gym's **Roulette-v0** environment. Let's first do the basic imports.
@@ -314,6 +319,16 @@ From the on-policy MC results, we see the following.
 plot_roulette(on_policy_dict, "on-policy control")
 ```
 
+<figure>
+    <img src="https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/master/src/assets/img/rl/on-policy_control_action_value.png" desc="On-policy roulette action values">
+    <figcaption>Action values of on-policy control for different numbers of iterations. The action values converge as the number of iterations increase.</figcaption>
+</figure>
+
+<figure>
+    <img src="https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/master/src/assets/img/rl/on-policy_control_reward.png" desc="On-policy roulette rewards">
+    <figcaption>Total reward from running 1000 iterations of the optimal policy. Notice that the reward is always 0.</figcaption>
+</figure>
+
 The action-values meet our expectations here. As the number of episodes increase, the action-values converge to -1/37. The action-value for leaving the board is always 0. As for the total rewards, the agent chooses not to play the game.
 
 # The Off-Policy Strategy
@@ -420,6 +435,16 @@ We see a similar mess in the plots.
 ```py
 plot_roulette(off_policy_dict, "off-policy control", num_episodes=1000)
 ```
+
+<figure>
+    <img src="https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/master/src/assets/img/rl/off-policy_control_action_value.png" desc="Off-policy roulette action values">
+    <figcaption>Action values of off-policy control for different numbers of iterations. Convergence? </figcaption>
+</figure>
+
+<figure>
+    <img src="https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/master/src/assets/img/rl/off-policy_control_reward.png" desc="Off-policy roulette rewards">
+    <figcaption>Total reward from running 1000 iterations of the optimal policy. There are massive fluctuations in rewards.</figcaption>
+</figure>
 
 Off-policy Monte Carlo control fails to solve the roulette problem. Running the algorithm gives a different optimal policy each time. My hypothesis is that because off-policy control stops learning from an episode the moment the behavior and target policies differ, whenever the optimal early stopping scenario comes up in the behavior policy sequence, it doesn't match the target policy. Thus the agent doesn't learn from that episode. In cases where the first few actions may have a simulation-ending impact, off-policy Monte Carlo control may be unsuitable.
 
