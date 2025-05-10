@@ -1,6 +1,7 @@
 ---
 id: autogluon
 title: AutoGluon-Tabular
+subtitle: AutoML for Structured Data
 description: AutoGluon-Tabular - Robut and Accuracte AutoML for Structured Data
 tags: [AutoML, Machine Learning, Python]
 share-img: https://raw.githubusercontent.com/autogluon/autogluon/refs/heads/master/docs/_static/autogluon-logo.jpg
