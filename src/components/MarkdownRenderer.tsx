@@ -79,7 +79,7 @@ const MarkdownRenderer = ({
             <ol className="list-decimal pl-6 my-4" {...props} />
           ),
           li: ({ node, ...props }) => <li className="my-1" {...props} />,
-          code({ node, inline, className, children, ...props }) {
+          code({ node, inline, className, children, ...props }: CodeProps) {
             const match = /language-(\w+)/.exec(className || "");
             const value = String(children).replace(/\n$/, "");
 
