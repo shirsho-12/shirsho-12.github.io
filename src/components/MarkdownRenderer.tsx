@@ -51,7 +51,7 @@ const MarkdownRenderer = ({
           p: ({ node, ...props }) => <p className="paragraph" {...props} />,
           a: ({ node, ...props }) => (
             <a
-              className="text-teal hover:text-teal/80 underline"
+              className="text-accent hover:text-accent-hover underline"
               target="_blank"
               rel="noopener noreferrer"
               {...props}
@@ -100,26 +100,26 @@ const MarkdownRenderer = ({
           },
           blockquote: ({ node, ...props }) => (
             <blockquote
-              className="border-l-4 border-teal pl-4 italic my-4 text-gray-600"
+              className="border-l-4 border-accent pl-4 italic my-4 text-muted-foreground"
               {...props}
             />
           ),
           table: ({ node, ...props }) => (
             <div className="overflow-x-auto my-6">
               <table
-                className="min-w-full border-collapse border border-gray-300"
+                className="min-w-full border-collapse border border-border"
                 {...props}
               />
             </div>
           ),
           th: ({ node, ...props }) => (
             <th
-              className="border border-gray-300 bg-gray-100 px-4 py-2 text-left"
+              className="border border-border bg-muted px-4 py-2 text-left"
               {...props}
             />
           ),
           td: ({ node, ...props }) => (
-            <td className="border border-gray-300 px-4 py-2" {...props} />
+            <td className="border border-border px-4 py-2" {...props} />
           ),
         }}
       >

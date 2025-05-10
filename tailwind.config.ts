@@ -1,13 +1,13 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
+  darkMode: "class",
   prefix: "",
   theme: {
     container: {
@@ -19,52 +19,34 @@ export default {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
-        navy: "hsl(var(--navy))",
-        teal: "hsl(var(--teal))",
-        coral: "hsl(var(--coral))",
+        text: "var(--text)",
+        background: "var(--background)",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        accent: "var(--accent)",
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        foreground: "var(--text)",
+        "primary-foreground": "var(--primary-foreground)",
+        "secondary-foreground": "var(--secondary-foreground)",
+        "accent-foreground": "var(--accent-foreground)",
+        destructive: "var(--destructive)",
+        "destructive-foreground": "var(--destructive-foreground)",
+        muted: "var(--muted)",
+        "muted-foreground": "var(--muted-foreground)",
+        popover: "var(--popover)",
+        "popover-foreground": "var(--popover-foreground)",
+        card: "var(--card)",
+        "card-foreground": "var(--card-foreground)",
+      },
+      backgroundImage: {
+        "linear-primary-secondary": "var(--linearPrimarySecondary)",
+        "linear-primary-accent": "var(--linearPrimaryAccent)",
+        "linear-secondary-accent": "var(--linearSecondaryAccent)",
+        "radial-primary-secondary": "var(--radialPrimarySecondary)",
+        "radial-primary-accent": "var(--radialPrimaryAccent)",
+        "radial-secondary-accent": "var(--radialSecondaryAccent)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -107,37 +89,37 @@ export default {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
       },
-    },
-    typography: {
-      DEFAULT: {
-        css: {
-          maxWidth: "none",
-          color: "hsl(var(--foreground))",
-          a: {
-            color: "hsl(var(--teal))",
-            textDecoration: "underline",
-            "&:hover": {
-              color: "hsl(var(--teal) / 0.8)",
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "none",
+            color: "var(--text)",
+            a: {
+              color: "var(--accent)",
+              textDecoration: "underline",
+              "&:hover": {
+                color: "var(--accent-hover)",
+              },
             },
-          },
-          h1: {
-            color: "hsl(var(--primary))",
-          },
-          h2: {
-            color: "hsl(var(--primary))",
-          },
-          h3: {
-            color: "hsl(var(--primary))",
-          },
-          h4: {
-            color: "hsl(var(--primary))",
-          },
-          blockquote: {
-            borderLeftColor: "hsl(var(--teal))",
-            color: "hsl(var(--muted-foreground))",
-          },
-          code: {
-            color: "hsl(var(--primary))",
+            h1: {
+              color: "var(--primary)",
+            },
+            h2: {
+              color: "var(--primary)",
+            },
+            h3: {
+              color: "var(--primary)",
+            },
+            h4: {
+              color: "var(--primary)",
+            },
+            blockquote: {
+              borderLeftColor: "var(--accent)",
+              color: "var(--muted-foreground)",
+            },
+            code: {
+              color: "var(--primary)",
+            },
           },
         },
       },

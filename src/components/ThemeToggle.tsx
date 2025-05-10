@@ -1,25 +1,22 @@
-import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Sun, Moon } from "lucide-react";
 import { useThemePreference } from "@/hooks/useThemePreference";
-// Disable dark mode
-const ThemeToggle = () => {
-  const [theme, setTheme] = useThemePreference();
 
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "light" : "light");
-  };
+const ThemeToggle = () => {
+  const [theme, toggleTheme] = useThemePreference();
 
   return (
     <Button
       variant="outline"
       size="icon"
-      // onClick={toggleTheme}
-      className="w-9 h-9 border-primary/30 dark:border-primary/50 dark:hover:bg-primary/20"
-      aria-label="Toggle theme"
-      disabled
+      className="w-9 h-9 border-primary/30 hover:bg-primary/20"
+      onClick={toggleTheme}
+      aria-label={
+        theme === "light" ? "Switch to dark mode" : "Switch to light mode"
+      }
     >
       {theme === "light" ? (
-        <Moon className="h-5 w-5" />
+        <Moon className="h-5 w-5 text-primary" />
       ) : (
         <Sun className="h-5 w-5 text-primary" />
       )}

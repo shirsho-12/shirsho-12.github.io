@@ -45,17 +45,14 @@ const Navbar = () => {
     <header
       className={`fixed w-full top-0 z-50 transition-colors duration-300 ${
         scrolled
-          ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm"
+          ? "bg-background/90 backdrop-blur-md shadow-sm"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <NavLink
-              to="/"
-              className="text-2xl font-bold text-navy dark:text-white"
-            >
+            <NavLink to="/" className="text-2xl font-bold text-primary">
               Shirshajit
             </NavLink>
           </div>
@@ -69,8 +66,8 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   `px-1 py-2 text-sm font-medium transition-colors ${
                     isActive
-                      ? "text-navy dark:text-white border-b-2 border-navy dark:border-white"
-                      : "text-gray-600 dark:text-gray-300 hover:text-navy dark:hover:text-white"
+                      ? "text-primary border-b-2 border-primary"
+                      : "text-text/70 hover:text-primary"
                   }`
                 }
               >
@@ -90,7 +87,7 @@ const Navbar = () => {
               variant="ghost"
               size="icon"
               onClick={toggleMenu}
-              className="text-gray-700 dark:text-gray-200"
+              className="text-text"
             >
               {isOpen ? (
                 <X className="h-6 w-6" />
@@ -104,17 +101,15 @@ const Navbar = () => {
 
       {/* Mobile menu panel */}
       {isMobile && isOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-white dark:bg-gray-900 shadow-lg min-h-screen overflow-y-auto">
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-background shadow-lg min-h-screen overflow-y-auto">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `block px-3 py-4 text-base font-medium border-b dark:border-gray-700 ${
-                    isActive
-                      ? "text-navy dark:text-white"
-                      : "text-gray-600 dark:text-gray-300"
+                  `block px-3 py-4 text-base font-medium border-b dark:border-primary/20 border-secondary/20 ${
+                    isActive ? "text-primary" : "text-text/70"
                   }`
                 }
                 onClick={closeMenu}

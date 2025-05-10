@@ -4,7 +4,7 @@ const CVHeader = () => {
   return (
     <header className="mb-16 text-center">
       <h1 className="heading-1 mb-4">Shirshajit Sen Gupta</h1>
-      <p className="text-xl text-muted-foreground dark:text-gray-300 mb-6">
+      <p className="text-xl text-muted-foreground mb-6">
         AI Researcher & Software Engineer
       </p>
       <div className="flex justify-center space-x-4">

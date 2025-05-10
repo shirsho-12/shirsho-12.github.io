@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -6,75 +7,77 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --text: #121717;
+    --background: #f6f8f8;
+    --primary: #374948;
+    --secondary: #999cb2;
+    --accent: #6d698c;
+    --accent-hover: #5a5675;
     
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --primary-foreground: #fff;
+    --secondary-foreground: #121717;
+    --accent-foreground: #fff;
     
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --muted: #f1f5f5;
+    --muted-foreground: #637271;
     
-    --primary: 222 47% 11%;
-    --primary-foreground: 210 40% 98%;
+    --border: #e3e5e5;
+    --input: #dfe1e1;
+    --ring: #374948;
     
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11%;
+    --destructive: #ef4444;
+    --destructive-foreground: #fff;
     
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover: #f6f8f8;
+    --popover-foreground: #121717;
     
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222 47% 11%;
+    --card: #fff;
+    --card-foreground: #121717;
     
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222 47% 11%;
-
     --radius: 0.5rem;
 
-    --navy: 222 47% 11%;
-    --teal: 187 47% 55%;
-    --coral: 0 87% 67%;
+    --linearPrimarySecondary: linear-gradient(#374948, #999cb2);
+    --linearPrimaryAccent: linear-gradient(#374948, #6d698c);
+    --linearSecondaryAccent: linear-gradient(#999cb2, #6d698c);
+    --radialPrimarySecondary: radial-gradient(#374948, #999cb2);
+    --radialPrimaryAccent: radial-gradient(#374948, #6d698c);
+    --radialSecondaryAccent: radial-gradient(#999cb2, #6d698c);
   }
 
   .dark {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --text: #e8eded;
+    --background: #070909;
+    --primary: #b6c8c7;
+    --secondary: #4d5066;
+    --accent: #777396;
+    --accent-hover: #8985a7;
     
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --primary-foreground: #070909;
+    --secondary-foreground: #e8eded;
+    --accent-foreground: #070909;
     
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --muted: #131b1b;
+    --muted-foreground: #95a5a5;
     
-    --primary: 222 47% 11%;
-    --primary-foreground: 210 40% 98%;
+    --border: #1f2727;
+    --input: #262d2d;
+    --ring: #b6c8c7;
     
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11%;
+    --destructive: #ef4444;
+    --destructive-foreground: #e8eded;
     
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover: #070909;
+    --popover-foreground: #e8eded;
     
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222 47% 11%;
-    
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --card: #111414;
+    --card-foreground: #e8eded;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222 47% 11%;
-
-    --radius: 0.5rem;
-
-    --navy: 222 47% 11%;
-    --teal: 187 47% 55%;
-    --coral: 0 87% 67%;
+    --linearPrimarySecondary: linear-gradient(#b6c8c7, #4d5066);
+    --linearPrimaryAccent: linear-gradient(#b6c8c7, #777396);
+    --linearSecondaryAccent: linear-gradient(#4d5066, #777396);
+    --radialPrimarySecondary: radial-gradient(#b6c8c7, #4d5066);
+    --radialPrimaryAccent: radial-gradient(#b6c8c7, #777396);
+    --radialSecondaryAccent: radial-gradient(#4d5066, #777396);
   }
 
   * {
@@ -82,10 +85,11 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-text font-sans antialiased;
   }
 }
-  
+
+/* Typography classes */
 @layer components {
   .heading-1 {
     @apply text-4xl font-bold text-primary mb-4;
@@ -108,7 +112,7 @@
   }
   
   .paragraph {
-    @apply text-base text-foreground leading-relaxed mb-4;
+    @apply text-base text-text leading-relaxed mb-4;
   }
   
   .caption {
@@ -128,7 +132,7 @@
   }
   
   .text-gradient {
-    @apply bg-gradient-to-r from-teal to-blue-500 bg-clip-text text-transparent;
+    @apply bg-linear-primary-accent bg-clip-text text-transparent;
   }
   
   /* Card styles */
@@ -137,7 +141,7 @@
   }
   
   .card-footer {
-    @apply flex justify-between items-center bg-secondary p-6 mt-auto;
+    @apply flex justify-between items-center bg-muted p-6 mt-auto;
   }
   
   .tag {
@@ -146,12 +150,21 @@
   
   /* Button styles */
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90;
-  }
+    @apply text-primary-foreground;
+  background-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--primary) 80%, transparent);
+}
   
   .btn-outline {
-    @apply border-primary text-primary hover:bg-primary/5;
-  }
+  @apply border border-primary text-primary;
+}
+
+.btn-outline:hover {
+  background-color: rgba(55, 73, 72, 0.05); /* 5% opacity of #374948 */
+}
   
   /* Math styles */
   .katex-display {
@@ -159,6 +172,6 @@
   }
   
   .katex {
-    @apply text-foreground;
+    @apply text-text;
   }
 }

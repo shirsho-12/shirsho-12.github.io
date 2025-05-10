@@ -44,7 +44,7 @@ const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
                   <h3 className="text-xl font-bold text-navy">
                     {experience.title}
                   </h3>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-muted-foreground">
                     {formatDate(experience.start_date)} -{" "}
                     {formatDate(experience.end_date)}
                   </span>
@@ -54,7 +54,7 @@ const ExperienceSection = ({ experiences }: ExperienceSectionProps) => {
                   <h4 className="font-medium text-gray-700 dark:text-gray-300">
                     {experience.description}
                   </h4>
-                  <span className="text-sm text-gray-500 md:ml-2">
+                  <span className="text-sm text-muted-foreground md:ml-2">
                     {experience.address}
                   </span>
                 </div>

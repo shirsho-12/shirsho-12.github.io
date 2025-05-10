@@ -31,7 +31,7 @@ const PublicationCard = ({
   return (
     <Card className="card-hover">
       <CardHeader>
-        <CardTitle className="text-xl">{title}</CardTitle>
+        <CardTitle className="text-xl text-primary">{title}</CardTitle>
         <div className="caption mt-1">
           <p>{authors}</p>
           <p className="mt-1 font-medium">

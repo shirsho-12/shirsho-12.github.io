@@ -79,7 +79,7 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-navy mb-4">Get in Touch</h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-foreground dark:text-gray-300 max-w-3xl mx-auto text-lg">
             Have a question or interested in working together? Feel free to
             reach out using the form below or connect with me on social media.
           </p>
@@ -179,7 +179,7 @@ const Contact = () => {
                     >
                       github.com/shirsho-12
                     </a>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-muted-foreground mt-1">
                       Check out my code and projects
                     </p>
                   </div>
@@ -198,7 +198,7 @@ const Contact = () => {
                     >
                       linkedin.com/in/shirshajit
                     </a>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-muted-foreground mt-1">
                       Connect professionally
                     </p>
                   </div>
@@ -215,7 +215,7 @@ const Contact = () => {
                     >
                       shirshajit@gmail.com
                     </a>
-                    <p className="text-sm text-gray-600 mt-1">
+                    <p className="text-sm text-muted-foreground mt-1">
                       For direct inquiries
                     </p>
                   </div>
@@ -228,7 +228,7 @@ const Contact = () => {
                 <CardTitle>Office Hours</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   I'm generally available for virtual meetings Monday through
                   Friday. Feel free to suggest a time when reaching out!
                 </p>

@@ -26,10 +26,10 @@ const PublicationsSection = () => {
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 {pub.title}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+              <p className="text-sm text-muted-foreground mt-1">
                 {pub.authors}
               </p>
-              <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
                 {pub.conference}, {pub.year}
               </p>
               <div className="flex gap-4 mt-4">

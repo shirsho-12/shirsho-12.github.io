@@ -19,7 +19,7 @@ const ProjectCard = ({
 }: ProjectCardProps) => {
   return (
     <Card
-      className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer dark:bg-card flex flex-col h-full"
+      className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer flex flex-col h-full"
       onClick={() =>
         onSelect?.({ id, title, description, tags, image, githubUrl, liveUrl })
       }

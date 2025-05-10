@@ -42,7 +42,7 @@ const BlogPostCard = ({
         <CardTitle>
           <Link
             to={`/blog/${id}`}
-            className="hover:text-teal transition-colors"
+            className="hover:text-accent transition-colors"
           >
             {title}
           </Link>
@@ -59,7 +59,7 @@ const BlogPostCard = ({
             <Badge
               key={tag}
               variant="secondary"
-              className="bg-gray-100 text-primary hover:bg-gray-200"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
             >
               {tag}
             </Badge>
@@ -70,7 +70,7 @@ const BlogPostCard = ({
       <CardFooter>
         <Link
           to={`/blog/${id}`}
-          className="text-teal hover:text-teal/80 font-medium transition-colors"
+          className="text-accent hover:text-accent-hover font-medium transition-colors"
         >
           Read more →
         </Link>

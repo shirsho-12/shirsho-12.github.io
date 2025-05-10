@@ -24,7 +24,7 @@ const BlogPostHeader = ({
             <Badge
               key={tag}
               variant="secondary"
-              className="bg-gray-100 text-primary"
+              className="bg-secondary text-secondary-foreground"
             >
               {tag}
             </Badge>
