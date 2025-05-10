@@ -1,4 +1,3 @@
-
 import {
   Dialog,
   DialogContent,
@@ -8,7 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { GithubIcon, Link as LinkIcon } from "lucide-react";
+import { GithubIcon, LinkIcon, YoutubeIcon, FileText } from "lucide-react";
 import type { Project } from "@/data/projects";
 
 interface ProjectDialogProps {
@@ -24,7 +23,7 @@ const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
         <DialogHeader>
           <DialogTitle>{project.title}</DialogTitle>
         </DialogHeader>
-        
+
         {project.image && (
           <div className="relative h-64 overflow-hidden rounded-lg">
             <img
@@ -34,24 +33,24 @@ const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
             />
           </div>
         )}
-        
+
         <div className="flex flex-wrap gap-2 my-4">
           {project.tags.map((tag) => (
             <Badge
               key={tag}
               variant="secondary"
-              className="bg-gray-100 text-navy hover:bg-gray-200"
+              className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
             >
               {tag}
             </Badge>
           ))}
         </div>
-        
-        <DialogDescription className="text-base text-gray-700 mt-2">
+
+        <DialogDescription className="text-base text-muted-foreground mt-2">
           {project.description}
         </DialogDescription>
-        
-        <div className="flex gap-4 mt-6">
+
+        <div className="flex flex-wrap gap-4 mt-6">
           {project.githubUrl && (
             <Button variant="outline" asChild>
               <a
@@ -65,9 +64,9 @@ const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
               </a>
             </Button>
           )}
-          
+
           {project.liveUrl && (
-            <Button asChild className="bg-navy hover:bg-navy/90">
+            <Button asChild>
               <a
                 href={project.liveUrl}
                 target="_blank"
@@ -76,6 +75,34 @@ const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
               >
                 <LinkIcon className="h-4 w-4" />
                 Live Demo
+              </a>
+            </Button>
+          )}
+
+          {project.youtubeUrl && (
+            <Button variant="outline" asChild>
+              <a
+                href={project.youtubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <YoutubeIcon className="h-4 w-4" />
+                Watch Demo
+              </a>
+            </Button>
+          )}
+
+          {project.paperUrl && (
+            <Button variant="outline" asChild>
+              <a
+                href={project.paperUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <FileText className="h-4 w-4" />
+                Read Paper
               </a>
             </Button>
           )}

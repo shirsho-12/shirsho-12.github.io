@@ -48,7 +48,7 @@ export async function getMarkdownProjects(): Promise<Project[]> {
             meta[key] = value
               .split(",")
               .map((tag: string) => tag.trim().replace(/^"|"$/g, ""));
-          } else if (key == "featured") {
+          } else if (key === "featured") {
             // convert string to boolean
             meta[key] = value === "true" ? true : false;
           } else {
@@ -64,6 +64,8 @@ export async function getMarkdownProjects(): Promise<Project[]> {
           image: meta.image,
           githubUrl: meta.githubUrl,
           liveUrl: meta.liveUrl,
+          youtubeUrl: meta.youtubeUrl,
+          paperUrl: meta.paperUrl,
           content: markdown.trim(),
           featured: meta.featured || false,
         });

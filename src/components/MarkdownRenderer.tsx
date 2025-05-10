@@ -10,6 +10,7 @@ import "katex/dist/katex.min.css";
 
 interface MarkdownRendererProps {
   content: string;
+  className?: string;
 }
 
 interface CodeProps {
@@ -19,7 +20,10 @@ interface CodeProps {
   children?: React.ReactNode;
 }
 
-const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
+const MarkdownRenderer = ({
+  content,
+  className = "",
+}: MarkdownRendererProps) => {
   const processedContent = content.replace(/{%\s*include.*?%}/g, "");
 
   const baseUrl = import.meta.env.BASE_URL || "/";
@@ -34,7 +38,9 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
   );
 
   return (
-    <div className="prose prose-slate max-w-none">
+    <div
+      className={`prose prose-slate dark:prose-invert max-w-none ${className}`}
+    >
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
         rehypePlugins={[rehypeRaw, rehypeKatex]}
@@ -73,38 +79,31 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
             <ol className="list-decimal pl-6 my-4" {...props} />
           ),
           li: ({ node, ...props }) => <li className="my-1" {...props} />,
-          code: ({
-            node,
-            inline,
-            className,
-            children,
-            ...props
-          }: CodeProps) => {
+          code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || "");
-            const language = match ? match[1] : "";
+            const value = String(children).replace(/\n$/, "");
 
             if (inline) {
               return (
-                <code
-                  className="bg-gray-100 px-1 py-0.5 rounded text-navy font-mono text-sm"
-                  {...props}
-                >
+                <code className={className} {...props}>
                   {children}
                 </code>
               );
             }
 
-            return (
+            return !inline && match ? (
               <SyntaxHighlighter
-                style={oneDark}
-                language={language}
+                language={match[1]}
                 PreTag="div"
-                className="rounded-md my-4"
-                showLineNumbers
                 {...props}
+                style={oneDark}
               >
-                {String(children).replace(/\n$/, "")}
+                {value}
               </SyntaxHighlighter>
+            ) : (
+              <code className={className} {...props}>
+                {children}
+              </code>
             );
           },
           blockquote: ({ node, ...props }) => (

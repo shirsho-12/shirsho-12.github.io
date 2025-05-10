@@ -100,4 +100,13 @@
   .text-gradient {
     @apply bg-gradient-to-r from-teal to-blue-500 bg-clip-text text-transparent;
   }
+
+  /* Math styles */
+  .katex-display {
+    @apply my-4 overflow-x-auto;
+  }
+  
+  .katex {
+    @apply text-foreground;
+  }
 }
