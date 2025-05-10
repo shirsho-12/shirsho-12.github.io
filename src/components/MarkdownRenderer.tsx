@@ -45,18 +45,10 @@ const MarkdownRenderer = ({
         remarkPlugins={[remarkGfm, remarkMath]}
         rehypePlugins={[rehypeRaw, rehypeKatex]}
         components={{
-          h1: ({ node, ...props }) => (
-            <h1 className="text-3xl font-bold mt-8 mb-4" {...props} />
-          ),
-          h2: ({ node, ...props }) => (
-            <h2 className="text-2xl font-bold mt-6 mb-3" {...props} />
-          ),
-          h3: ({ node, ...props }) => (
-            <h3 className="text-xl font-bold mt-5 mb-2" {...props} />
-          ),
-          p: ({ node, ...props }) => (
-            <p className="my-4 text-gray-700 leading-relaxed" {...props} />
-          ),
+          h1: ({ node, ...props }) => <h1 className="heading-1" {...props} />,
+          h2: ({ node, ...props }) => <h2 className="heading-3" {...props} />,
+          h3: ({ node, ...props }) => <h3 className="heading-4" {...props} />,
+          p: ({ node, ...props }) => <p className="paragraph" {...props} />,
           a: ({ node, ...props }) => (
             <a
               className="text-teal hover:text-teal/80 underline"
@@ -128,12 +120,6 @@ const MarkdownRenderer = ({
           ),
           td: ({ node, ...props }) => (
             <td className="border border-gray-300 px-4 py-2" {...props} />
-          ),
-          math: ({ node, ...props }) => (
-            <div className="my-4 overflow-x-auto" {...props} />
-          ),
-          inlineMath: ({ node, ...props }) => (
-            <span className="mx-1" {...props} />
           ),
         }}
       >

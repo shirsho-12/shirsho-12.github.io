@@ -3,10 +3,8 @@ import { Button } from "@/components/ui/button";
 const CVHeader = () => {
   return (
     <header className="mb-16 text-center">
-      <h1 className="text-4xl font-bold mb-4 text-navy">
-        Shirshajit Sen Gupta
-      </h1>
-      <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
+      <h1 className="heading-1 mb-4">Shirshajit Sen Gupta</h1>
+      <p className="text-xl text-muted-foreground dark:text-gray-300 mb-6">
         AI Researcher & Software Engineer
       </p>
       <div className="flex justify-center space-x-4">
@@ -19,7 +17,7 @@ const CVHeader = () => {
             Download Resume
           </a>
         </Button>
-        <Button asChild className="bg-navy hover:bg-navy/90">
+        <Button asChild className="btn-primary">
           <a href="mailto:contact@shirshajit.com">Contact Me</a>
         </Button>
       </div>

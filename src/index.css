@@ -84,13 +84,43 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
+}
+  
+@layer components {
+  .heading-1 {
+    @apply text-4xl font-bold text-primary mb-4;
+  }
+  
+  .heading-2 {
+    @apply text-3xl md:text-4xl font-bold text-primary mb-6;
+  }
+  
+  .heading-3 {
+    @apply text-2xl md:text-3xl font-bold text-primary mb-6;
+  }
+  
+  .heading-4 {
+    @apply text-xl font-semibold text-primary mb-4;
+  }
+  
+  .subtitle {
+    @apply text-xl md:text-2xl text-muted-foreground mb-4;
+  }
+  
+  .paragraph {
+    @apply text-base text-foreground leading-relaxed mb-4;
+  }
+  
+  .caption {
+    @apply text-sm text-muted-foreground;
+  }
   
   .prose img {
     @apply rounded-lg shadow-md mx-auto;
   }
   
   .section-heading {
-    @apply text-2xl md:text-3xl font-bold mb-6 text-navy;
+    @apply text-2xl md:text-3xl font-bold mb-6 text-primary;
   }
   
   .card-hover {
@@ -100,7 +130,29 @@
   .text-gradient {
     @apply bg-gradient-to-r from-teal to-blue-500 bg-clip-text text-transparent;
   }
-
+  
+  /* Card styles */
+  .card-body {
+    @apply p-6 flex-grow;
+  }
+  
+  .card-footer {
+    @apply flex justify-between items-center bg-secondary p-6 mt-auto;
+  }
+  
+  .tag {
+    @apply bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+  
+  .btn-outline {
+    @apply border-primary text-primary hover:bg-primary/5;
+  }
+  
   /* Math styles */
   .katex-display {
     @apply my-4 overflow-x-auto;

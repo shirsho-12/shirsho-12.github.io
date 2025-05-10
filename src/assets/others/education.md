@@ -1,5 +1,3 @@
-## Education
-
 ### National University of Singapore
 
 Singapore 119077  
@@ -19,8 +17,9 @@ Aug 2021 – May 2025
 - IT5005 Artificial Intelligence
 - DBA5101 Analytics in Managerial Economics
 
----
 
+---
+##
 ### McGill University
 
 Quebec, Canada  

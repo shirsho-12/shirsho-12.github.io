@@ -1,5 +1,3 @@
-## Leadership & Extracurricular Activities
-
 ### NUS Community Service Club
 
 **Volunteer Manager**  

@@ -36,11 +36,7 @@ const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
 
         <div className="flex flex-wrap gap-2 my-4">
           {project.tags.map((tag) => (
-            <Badge
-              key={tag}
-              variant="secondary"
-              className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
-            >
+            <Badge key={tag} variant="secondary" className="tag">
               {tag}
             </Badge>
           ))}

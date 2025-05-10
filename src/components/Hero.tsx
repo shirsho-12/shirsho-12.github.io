@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -10,23 +9,23 @@ const Hero = () => {
         <div className="text-center md:text-left md:flex md:items-center md:justify-between md:gap-8">
           <div className="md:max-w-3xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
-              <span className="text-navy">Shirshajit</span> <br />
+              <span className="text-primary">Shirshajit</span> <br />
               <span className="text-gradient">Sen Gupta</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto md:mx-0">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto md:mx-0">
               Passionate about artificial intelligence, app development, and
               creating solutions that make a difference. Sharing my journey
               through buggy code, research papers, and blog posts.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <Button asChild size="lg" className="bg-navy hover:bg-navy/90">
+              <Button asChild size="lg" className="btn-primary">
                 <Link to="/projects">View Projects</Link>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-navy text-navy hover:bg-navy/5"
+                className="btn-outline"
               >
                 <Link to="/contact">Get in Touch</Link>
               </Button>
@@ -36,7 +35,7 @@ const Hero = () => {
             <img
               src="https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/refs/heads/master/src/assets/img/prof_pic.jpg"
               alt="Profile Picture"
-              className="w-full h-80 object-cover rounded-lg shadow-xl hidden md:block"
+              className="w-full h-auto object-cover rounded-lg shadow-xl hidden md:block"
             />
           </div>
         </div>
