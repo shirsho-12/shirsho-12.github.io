@@ -51,6 +51,8 @@ const Projects = () => {
                 image={project.image}
                 githubUrl={project.githubUrl}
                 liveUrl={project.liveUrl}
+                youtubeUrl={project.youtubeUrl}
+                paperUrl={project.paperUrl}
                 onSelect={() => handleProjectSelect(project)}
               />
             ))}

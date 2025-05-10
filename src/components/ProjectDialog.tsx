@@ -84,7 +84,7 @@ const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
                 className="flex items-center gap-2"
               >
                 <YoutubeIcon className="h-4 w-4" />
-                Watch Demo
+                YouTube
               </a>
             </Button>
           )}

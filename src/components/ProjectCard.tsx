@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { GithubIcon, LinkIcon } from "lucide-react";
+import { FileText, GithubIcon, LinkIcon, YoutubeIcon } from "lucide-react";
 import { Project } from "@/data/projects";
 
 interface ProjectCardProps extends Project {
@@ -15,13 +15,25 @@ const ProjectCard = ({
   image,
   githubUrl,
   liveUrl,
+  youtubeUrl,
+  paperUrl,
   onSelect,
 }: ProjectCardProps) => {
   return (
     <Card
       className="overflow-hidden hover:shadow-lg transition-shadow cursor-pointer flex flex-col h-full"
       onClick={() =>
-        onSelect?.({ id, title, description, tags, image, githubUrl, liveUrl })
+        onSelect?.({
+          id,
+          title,
+          description,
+          tags,
+          image,
+          githubUrl,
+          liveUrl,
+          youtubeUrl,
+          paperUrl,
+        })
       }
     >
       <CardContent className="p-6 flex-grow">
@@ -62,7 +74,34 @@ const ProjectCard = ({
                 className="flex items-center gap-1"
               >
                 <LinkIcon className="h-4 w-4" />
-                Live Demo
+                Demo
+              </a>
+            </Button>
+          )}
+
+          {youtubeUrl && (
+            <Button asChild variant="ghost" size="sm">
+              <a
+                href={youtubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1"
+              >
+                <YoutubeIcon className="h-4 w-4" />
+                YouTube
+              </a>
+            </Button>
+          )}
+          {paperUrl && (
+            <Button asChild variant="ghost" size="sm">
+              <a
+                href={paperUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1"
+              >
+                <FileText className="h-4 w-4" />
+                Paper
               </a>
             </Button>
           )}
