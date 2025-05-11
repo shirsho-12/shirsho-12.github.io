@@ -12,12 +12,12 @@ const Hero = () => {
               <span className="text-primary">Shirshajit</span> <br />
               <span className="text-gradient">Sen Gupta</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto md:mx-0">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto md:mx-0 opacity-0 animate-[fade-in_0.5s_ease-out_0.3s_forwards]">
               Passionate about artificial intelligence, app development, and
               creating solutions that make a difference. Sharing my journey
               through buggy code, research papers, and blog posts.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start opacity-0 animate-[fade-in_0.5s_ease-out_0.6s_forwards]">
               <Button asChild size="lg" className="btn-primary">
                 <Link to="/projects">View Projects</Link>
               </Button>
@@ -31,7 +31,7 @@ const Hero = () => {
               </Button>
             </div>
           </div>
-          <div className="hidden md:block md:w-1/4 lg:w-1/5">
+          <div className="hidden md:block md:w-1/4 lg:w-1/5 opacity-0 animate-[fade-in_0.5s_ease-out_0.9s_forwards]">
             <img
               src="https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/refs/heads/master/src/assets/img/prof_pic.jpg"
               alt="Profile Picture"
