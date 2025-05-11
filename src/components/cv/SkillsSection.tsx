@@ -22,7 +22,7 @@ const LanguageSlider = ({
     <div className="mb-4">
       <div className="flex justify-between items-center mb-2">
         <span className="text-sm font-medium">{language}</span>
-        <span className="text-sm text-gray-500">{level}/5</span>
+        <span className="text-sm text-muted-foreground">{level}/5</span>
       </div>
       <Slider
         value={[level]}
@@ -60,8 +60,8 @@ const SkillsSection = ({ content }: SkillsSectionProps) => {
   return (
     <section className="mb-16">
       <div className="flex items-center mb-8">
-        <Code className="mr-2 text-navy" size={24} />
-        <h2 className="text-2xl font-bold text-navy">Skills</h2>
+        <Code className="mr-2 text-primary" size={24} />
+        <h2 className="text-2xl font-bold text-primary">Skills</h2>
       </div>
       <div className="prose max-w-none mb-8">
         <MarkdownRenderer content={technicalContent} />

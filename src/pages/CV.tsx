@@ -21,7 +21,7 @@ const CV = () => {
     return (
       <Layout>
         <div className="max-w-5xl mx-auto px-4 py-16">
-          <p>Loading CV content...</p>
+          <p className="text-muted-foreground">Loading CV content...</p>
         </div>
       </Layout>
     );
@@ -31,7 +31,7 @@ const CV = () => {
     return (
       <Layout>
         <div className="max-w-5xl mx-auto px-4 py-16">
-          <p className="text-red-500">
+          <p className="text-destructive">
             Error loading CV content: {error.message}
           </p>
         </div>

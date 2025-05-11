@@ -163,7 +163,7 @@
 }
 
 .btn-outline:hover {
-  background-color: rgba(55, 73, 72, 0.05); /* 5% opacity of #374948 */
+  background-color:  var(--secondary); 
 }
   
   /* Math styles */

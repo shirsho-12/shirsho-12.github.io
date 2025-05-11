@@ -43,7 +43,7 @@ const FeaturedProjects = () => {
           <div className="flex justify-between items-center mb-12">
             <h2 className="section-heading mb-0">Featured Projects</h2>
           </div>
-          <div className="text-center py-8 text-red-500">
+          <div className="text-center py-8 text-destructive">
             <p>Error loading projects: {error.message}</p>
           </div>
         </div>
@@ -63,7 +63,9 @@ const FeaturedProjects = () => {
             </Button>
           </div>
           <div className="text-center py-8">
-            <p>No featured projects found. Check out all projects instead!</p>
+            <p className="text-muted-foreground">
+              No featured projects found. Check out all projects instead!
+            </p>
           </div>
         </div>
       </section>

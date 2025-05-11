@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import BlogPostCard from "@/components/BlogPostCard";
@@ -9,7 +8,7 @@ const RecentBlogPosts = () => {
   const recentBlogPosts = posts.slice(0, 3);
 
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900">
+    <section className="py-16 primary-300 dark:primary-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-12">
           <h2 className="section-heading mb-0">Recent Blog Posts</h2>

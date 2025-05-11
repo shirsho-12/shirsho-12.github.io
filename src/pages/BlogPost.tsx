@@ -112,7 +112,7 @@ const BlogPost = () => {
       <Layout>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <div className="text-xl font-medium text-gray-700">
+            <div className="text-xl font-medium text-muted-foreground">
               Loading post...
             </div>
           </div>
@@ -126,7 +126,7 @@ const BlogPost = () => {
       <Layout>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <div className="text-xl font-medium text-red-600">{error}</div>
+            <div className="text-xl font-medium text-destructive">{error}</div>
             <Button
               variant="ghost"
               className="mt-4"
@@ -146,7 +146,7 @@ const BlogPost = () => {
       <Layout>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <div className="text-xl font-medium text-gray-700">
+            <div className="text-xl font-medium text-muted-foreground">
               Blog post not found
             </div>
             <Button
@@ -168,7 +168,7 @@ const BlogPost = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <Button
           variant="ghost"
-          className="mb-8 flex items-center gap-2 hover:bg-gray-100"
+          className="mb-8 flex items-center gap-2 hover:bg-muted"
           onClick={() => navigate("/blog")}
         >
           <ChevronLeft className="h-4 w-4" />

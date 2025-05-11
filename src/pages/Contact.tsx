@@ -78,8 +78,8 @@ const Contact = () => {
     <Layout>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-navy mb-4">Get in Touch</h1>
-          <p className="text-foreground dark:text-gray-300 max-w-3xl mx-auto text-lg">
+          <h1 className="text-4xl font-bold text-primary mb-4">Get in Touch</h1>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Have a question or interested in working together? Feel free to
             reach out using the form below or connect with me on social media.
           </p>
@@ -149,7 +149,7 @@ const Contact = () => {
 
                   <Button
                     type="submit"
-                    className="w-full bg-navy hover:bg-navy/90"
+                    className="w-full bg-primary hover:bg-primary/90"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Sending..." : "Send Message"}
@@ -167,14 +167,14 @@ const Contact = () => {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <GithubIcon className="h-6 w-6 text-navy mt-1" />
+                  <GithubIcon className="h-6 w-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">GitHub</h3>
                     <a
                       href="https://github.com/shirsho-12"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-teal hover:underline"
+                      className="text-accent hover:underline"
                       onClick={() => handleSocialClick("github")}
                     >
                       github.com/shirsho-12
@@ -186,14 +186,14 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <LinkedinIcon className="h-6 w-6 text-navy mt-1" />
+                  <LinkedinIcon className="h-6 w-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">LinkedIn</h3>
                     <a
                       href="https://linkedin.com/in/shirshajit"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-teal hover:underline"
+                      className="text-accent hover:underline"
                       onClick={() => handleSocialClick("linkedin")}
                     >
                       linkedin.com/in/shirshajit
@@ -205,12 +205,12 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <MailIcon className="h-6 w-6 text-navy mt-1" />
+                  <MailIcon className="h-6 w-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-medium">Email</h3>
                     <a
                       href="mailto:shirshajit@gmail.com"
-                      className="text-teal hover:underline"
+                      className="text-accent hover:underline"
                       onClick={() => handleSocialClick("email")}
                     >
                       shirshajit@gmail.com

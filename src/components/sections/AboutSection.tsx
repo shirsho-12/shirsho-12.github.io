@@ -8,7 +8,7 @@ import {
 
 const AboutSection = () => {
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900">
+    <section className="py-16 bg-secondary-50 dark:bg-secondary-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="section-heading">About Me</h2>
