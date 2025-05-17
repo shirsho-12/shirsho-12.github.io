@@ -18,7 +18,7 @@ const CVHeader = () => {
           </a>
         </Button>
         <Button asChild className="btn-primary">
-          <a href="mailto:contact@shirshajit.com">Contact Me</a>
+          <a href="mailto:shirshajit@gmail.com">Contact Me</a>
         </Button>
       </div>
     </header>
