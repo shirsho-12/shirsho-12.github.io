@@ -3,7 +3,7 @@ id: omnicat
 title: OmniCAT
 description: A multi-stage 3D segmentation task management platform developed for dental applications.
 duration: Sept 2024 – Nov 2024
-featured: true
+featured: false
 tags: ["AWS", "Django", "ML Orchestration", "Course Project"]
 image: https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/refs/heads/master/src/assets/img/omnicat.png
 githubUrl: https://github.com/omnicat-nus/omnicat

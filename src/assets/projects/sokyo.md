@@ -3,7 +3,7 @@ id: sokyo
 title: Sokyo
 description: A peer-finding messaging platform for university students.
 duration: Nov 2023
-featured: true
+featured: false
 tags: ["Flutter", "Messaging", "Full-Stack", "Hackathon"]
 image: https://raw.githubusercontent.com/shirsho-12/sokyo_eduhacks/refs/heads/master/assets/images/logo.PNG
 githubUrl: https://github.com/shirsho-12/sokyo_eduhacks

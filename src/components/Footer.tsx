@@ -11,8 +11,8 @@ const Footer = () => {
           <div className="mb-6 md:mb-0">
             <h3 className="text-xl font-bold mb-2">CS Portfolio</h3>
             <p className="text-primary-foreground/80 max-w-md">
-              Computer Science student specializing in software development,
-              research, and technical writing.
+              AI Researcher specializing in graph networks, NLP, and
+              reinforcement learning.
             </p>
           </div>
 

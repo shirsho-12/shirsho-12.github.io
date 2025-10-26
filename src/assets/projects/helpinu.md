@@ -3,7 +3,7 @@ id: helpinu
 title: HelpinU
 description: A volunteer aggregation platform for individuals and organizations to coordinate community efforts.
 duration: Jan 2023
-featured: true
+featured: false
 tags: ["Social Good", "Volunteerism", "Community Platform", "Hackathon"]
 image: https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/388/827/datas/gallery.jpg
 githubUrl: https://github.com/The-CoPilots/HelpinU
