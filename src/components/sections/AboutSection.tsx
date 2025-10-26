@@ -14,7 +14,7 @@ const AboutSection = () => {
           <h2 className="section-heading">About Me</h2>
           <p className="text-muted-foreground dark:text-gray-300 max-w-3xl mx-auto text-lg">
             Hi, I'm Shirshajit, an AI Researcher at the Social AI Studio at SUTD
-            working in graph neural networks and natural language processing. I
+            working on graph neural networks and natural language processing. I
             do hackathons on the side and love building applications that
             leverage AI to solve real-world problems. Thanks for stopping by,
             let's get in touch!
