@@ -5,7 +5,6 @@ description: A CV model that ranked first in class for detecting multiple object
 duration: Jan 2023 – Apr 2023
 featured: false
 tags: ["Computer Vision", "Feature Pyramid Networks", "Fourier Analysis", "Course Project",]
-im
 image: https://raw.githubusercontent.com/shirsho-12/cs4243_threat_detection/refs/heads/master/images/efficientdet_architecture.PNG
 githubUrl: https://github.com/shirsho-12/cs4243_threat_detection
 paperUrl: https://raw.githubusercontent.com/shirsho-12/shirsho-12.github.io/refs/heads/master/src/assets/docs/cs4243.pdf
