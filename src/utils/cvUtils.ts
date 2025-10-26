@@ -100,6 +100,10 @@ export function useCVContent() {
         // Sort experiences by end_date (most recent first)
         experienceItems.sort((a, b) => {
           // Convert DD/MM/YYYY to Date objects
+          if (a.end_date.toLowerCase() === "present" || a.end_date === "")
+            return -1;
+          if (b.end_date.toLowerCase() === "present" || b.end_date === "")
+            return 1;
           const [dayA, monthA, yearA] = a.end_date.split("/").map(Number);
           const [dayB, monthB, yearB] = b.end_date.split("/").map(Number);
 
